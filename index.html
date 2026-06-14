@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Fruitier – Légumes · Fruits · Épicerie Fine – La Destrousse</title>
+    <meta name="description" content="Le Fruitier à La Destrousse : fruits et légumes frais, épicerie fine, cave à vins, produits régionaux de Provence. Circuit court, producteurs locaux.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ─── VARIABLES ─────────────────────────────── */
+        :root {
+            --olive:      #8B8F47;
+            --green:      #616D29;
+            --kiwi:       #99C122;
+            --sage:       #D2D4C1;
+            --cream:      #F5F5EF;
+            --brown:      #5F3817;
+            --brown-mid:  #7a4920;
+            --white:      #ffffff;
+            --text-muted: rgba(95,56,23,0.6);
+
+            --ease-out: cubic-bezier(0.22,1,0.36,1);
+        }
+
+        /* ─── RESET & BASE ──────────────────────────── */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--cream);
+            color: var(--brown);
+            overflow-x: hidden;
+        }
+
+        img { display: block; max-width: 100%; }
+        a   { text-decoration: none; color: inherit; }
+
+        /* ─── TYPOGRAPHY HELPERS ────────────────────── */
+        .label {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            padding: 0.45rem 1rem;
+            background: var(--sage);
+            color: var(--green);
+            margin-bottom: 1.4rem;
+        }
+        .label--light  { background: rgba(255,255,255,0.12); color: var(--kiwi); }
+        .label--kiwi   { background: rgba(153,193,34,0.18); color: var(--kiwi); }
+
+        h2.display {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3.5vw, 3.4rem);
+            font-weight: 600;
+            line-height: 1.1;
+            color: var(--brown);
+        }
+        h2.display--white { color: var(--white); }
+
+        .lead {
+            font-size: 1rem;
+            line-height: 1.88;
+            color: var(--text-muted);
+        }
+
+        /* ─── BUTTONS ───────────────────────────────── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 1rem 2.2rem;
+            transition: background 0.28s, color 0.28s, transform 0.28s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn svg { flex-shrink: 0; transition: transform 0.28s; }
+        .btn:hover svg { transform: translateX(4px); }
+
+        .btn--dark  { background: var(--brown); color: var(--white); }
+        .btn--dark:hover  { background: var(--green); }
+
+        .btn--kiwi  { background: var(--kiwi); color: var(--brown); }
+        .btn--kiwi:hover  { background: var(--white); }
+
+        .btn--ghost {
+            background: transparent;
+            border: 1.5px solid var(--brown);
+            color: var(--brown);
+        }
+        .btn--ghost:hover { background: var(--brown); color: var(--white); }
+
+        /* ─── ARROW ICON ────────────────────────────── */
+        .arr {
+            width: 15px; height: 15px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* ════════════════════════════════════════════
+           NAVIGATION
+        ════════════════════════════════════════════ */
+        .nav {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 900;
+            padding: 0 5rem;
+            transition: background 0.4s, box-shadow 0.4s;
+        }
+        .nav__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.4rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.18);
+            transition: border-color 0.4s;
+        }
+        .nav.is-scrolled {
+            background: rgba(245,245,239,0.97);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 2px 28px rgba(95,56,23,0.07);
+        }
+        .nav.is-scrolled .nav__inner { border-color: var(--sage); }
+
+        /* Logo */
+        .nav__logo { display: flex; flex-direction: column; }
+        .nav__logo-svg { width: 38px; height: 38px; margin-bottom: 0.1rem; }
+        .nav__logo-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.04em;
+            line-height: 1;
+            transition: color 0.4s;
+        }
+        .nav__logo-sub {
+            font-size: 0.52rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.7);
+            transition: color 0.4s;
+        }
+        .nav.is-scrolled .nav__logo-name { color: var(--brown); }
+        .nav.is-scrolled .nav__logo-sub  { color: var(--olive); }
+
+        /* Menu */
+        .nav__menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 2.2rem;
+        }
+        .nav__menu a {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.9);
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav.is-scrolled .nav__menu a { color: var(--brown); }
+
+        .nav__menu a:not(.nav__cta)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--kiwi);
+            transition: width 0.3s var(--ease-out);
+        }
+        .nav__menu a:not(.nav__cta):hover::after { width: 100%; }
+
+        .nav__cta {
+            background: var(--kiwi) !important;
+            color: var(--brown) !important;
+            padding: 0.55rem 1.3rem;
+        }
+        .nav__cta:hover { background: var(--brown) !important; color: var(--white) !important; }
+
+        /* Hamburger */
+        .nav__burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+        .nav__burger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: white;
+            transition: background 0.4s;
+        }
+        .nav.is-scrolled .nav__burger span { background: var(--brown); }
+
+        /* ─── MOBILE DRAWER ─────────────────────────── */
+        .drawer {
+            position: fixed;
+            inset: 0;
+            background: var(--brown);
+            z-index: 950;
+            display: flex;
+            flex-direction: column;
+            padding: 5rem 2.5rem 3rem;
+            transform: translateX(100%);
+            transition: transform 0.42s var(--ease-out);
+        }
+        .drawer.is-open { transform: none; }
+        .drawer__close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.6rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .drawer__menu { list-style: none; }
+        .drawer__menu li { border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .drawer__menu a {
+            display: block;
+            padding: 1.1rem 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--white);
+            transition: color 0.3s;
+        }
+        .drawer__menu a:hover { color: var(--kiwi); }
+
+        /* ════════════════════════════════════════════
+           HERO CAROUSEL
+        ════════════════════════════════════════════ */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 640px;
+            overflow: hidden;
+        }
+
+        .hero__slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.4s ease;
+            will-change: opacity;
+        }
+        .hero__slide.is-active { opacity: 1; z-index: 1; }
+
+        .hero__slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 40%;
+        }
+
+        .hero__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                105deg,
+                rgba(95,56,23,0.72) 0%,
+                rgba(95,56,23,0.38) 45%,
+                rgba(97,109,41,0.12) 100%
+            );
+        }
+
+        /* Grain texture overlay */
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero__content {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 7rem;
+            padding-top: 5rem;
+        }
+
+        .hero__eyebrow {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--kiwi);
+            margin-bottom: 1.6rem;
+            opacity: 0;
+            transform: translateY(18px);
+            animation: fadeUp 0.8s var(--ease-out) 0.2s forwards;
+        }
+        .hero__title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.08;
+            max-width: 680px;
+            margin-bottom: 1.8rem;
+            opacity: 0;
+            transform: translateY(28px);
+            animation: fadeUp 0.85s var(--ease-out) 0.38s forwards;
+        }
+        .hero__title em {
+            font-style: italic;
+            color: var(--kiwi);
+        }
+        .hero__sub {
+            font-size: 1rem;
+            line-height: 1.72;
+            color: rgba(255,255,255,0.8);
+            max-width: 480px;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(18px);
+            animation: fadeUp 0.8s var(--ease-out) 0.54s forwards;
+        }
+        .hero__actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(18px);
+            animation: fadeUp 0.8s var(--ease-out) 0.7s forwards;
+        }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Indicators */
+        .hero__dots {
+            position: absolute;
+            z-index: 4;
+            bottom: 2.5rem;
+            left: 7rem;
+            display: flex;
+            gap: 0.7rem;
+        }
+        .hero__dot {
+            height: 2.5px;
+            width: 36px;
+            background: rgba(255,255,255,0.35);
+            cursor: pointer;
+            transition: width 0.5s var(--ease-out), background 0.4s;
+            border: none;
+        }
+        .hero__dot.is-active { width: 64px; background: var(--kiwi); }
+
+        /* Arrows */
+        .hero__arrow {
+            position: absolute;
+            z-index: 4;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s, border-color 0.3s, color 0.3s;
+            backdrop-filter: blur(6px);
+        }
+        .hero__arrow:hover { background: var(--kiwi); border-color: var(--kiwi); color: var(--brown); }
+        .hero__arrow--prev { left: 2rem; }
+        .hero__arrow--next { right: 2rem; }
+
+        /* Scroll hint */
+        .hero__scroll {
+            position: absolute;
+            z-index: 4;
+            bottom: 2.5rem;
+            right: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.62rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+        }
+        .hero__scroll-line {
+            width: 38px;
+            height: 1px;
+            background: rgba(255,255,255,0.4);
+            animation: lineBreath 2.2s ease-in-out infinite;
+        }
+        @keyframes lineBreath {
+            0%,100% { width:38px; opacity:.4; }
+            50%      { width:58px; opacity:1; }
+        }
+
+        /* ════════════════════════════════════════════
+           SECTION 1 – LA PROMESSE
+        ════════════════════════════════════════════ */
+        .promesse {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            align-items: stretch;
+        }
+        .promesse__text {
+            padding: 7rem 5rem 7rem 7rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .promesse__text h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.9rem, 2.8vw, 3rem);
+            font-weight: 600;
+            line-height: 1.15;
+            color: var(--brown);
+            margin-bottom: 1.8rem;
+        }
+        .promesse__text p { margin-bottom: 1.4rem; }
+
+        .promesse__stats {
+            display: flex;
+            gap: 2.5rem;
+            padding-top: 2.5rem;
+            margin-top: 2.5rem;
+            border-top: 1px solid var(--sage);
+        }
+        .stat__num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--green);
+            line-height: 1;
+            display: block;
+        }
+        .stat__lbl {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 0.06em;
+            margin-top: 0.25rem;
+        }
+
+        .promesse__visual {
+            position: relative;
+            overflow: hidden;
+            min-height: 540px;
+        }
+        .promesse__visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s var(--ease-out);
+        }
+        .promesse__visual:hover img { transform: scale(1.04); }
+
+        .promesse__badge {
+            position: absolute;
+            bottom: 2.5rem;
+            left: -1px;
+            background: var(--kiwi);
+            color: var(--brown);
+            padding: 1.2rem 1.8rem;
+        }
+        .promesse__badge strong {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1.1;
+        }
+        .promesse__badge span {
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            display: block;
+            margin-top: 0.3rem;
+        }
+
+        /* ════════════════════════════════════════════
+           SECTION 2 – ACTUALITÉS (BLOG SLIDER)
+        ════════════════════════════════════════════ */
+        .actualites {
+            background: var(--brown);
+            padding: 7rem 7rem 6rem;
+            overflow: hidden;
+        }
+        .actualites__head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3.5rem;
+        }
+        .blog-btns { display: flex; gap: 0.8rem; }
+        .blog-btn {
+            width: 46px; height: 46px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s, border-color 0.3s, color 0.3s;
+        }
+        .blog-btn:hover { background: var(--kiwi); border-color: var(--kiwi); color: var(--brown); }
+
+        .blog-track { overflow: hidden; }
+        .blog-carousel {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.55s var(--ease-out);
+        }
+
+        .blog-card {
+            flex: 0 0 calc(33.333% - 1.34rem);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            overflow: hidden;
+            transition: transform 0.36s, background 0.36s;
+        }
+        .blog-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-6px); }
+
+        .blog-card__img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            transition: transform 0.6s var(--ease-out);
+        }
+        .blog-card:hover .blog-card__img { transform: scale(1.04); }
+
+        .blog-card__body { padding: 1.8rem; }
+
+        .blog-card__tag {
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--kiwi);
+            margin-bottom: 0.9rem;
+        }
+        .blog-card__title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.28;
+            margin-bottom: 0.9rem;
+        }
+        .blog-card__excerpt {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.58);
+            line-height: 1.72;
+            margin-bottom: 1.4rem;
+        }
+        .blog-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.67rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--kiwi);
+            transition: gap 0.3s;
+        }
+        .blog-link:hover { gap: 1rem; }
+
+        /* ════════════════════════════════════════════
+           SECTION 3 – GRILLE PRODUITS
+        ════════════════════════════════════════════ */
+        .grid-head {
+            padding: 6rem 7rem 3.5rem;
+            text-align: center;
+            background: var(--cream);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 300px);
+        }
+
+        .pcell {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .pcell img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s var(--ease-out);
+        }
+        .pcell:hover img { transform: scale(1.09); }
+
+        .pcell__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(95,56,23,0.88) 0%,
+                rgba(95,56,23,0.15) 55%,
+                transparent 100%
+            );
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            transition: background 0.4s;
+        }
+        .pcell:hover .pcell__overlay {
+            background: linear-gradient(
+                to top,
+                rgba(97,109,41,0.92) 0%,
+                rgba(97,109,41,0.45) 100%
+            );
+        }
+
+        .pcell__tag {
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--kiwi);
+            margin-bottom: 0.4rem;
+        }
+        .pcell__title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .pcell__arrow {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            width: 34px; height: 34px;
+            background: var(--kiwi);
+            color: var(--brown);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(-8px) scale(0.9);
+            transition: opacity 0.35s, transform 0.35s var(--ease-out);
+        }
+        .pcell:hover .pcell__arrow { opacity: 1; transform: none; }
+
+        /* ════════════════════════════════════════════
+           SECTION 4 – PRODUCTEURS
+        ════════════════════════════════════════════ */
+        .producteurs {
+            background: var(--sage);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            min-height: 680px;
+        }
+        .producteurs__visual {
+            position: relative;
+            height: 100%;
+            min-height: 600px;
+            overflow: hidden;
+        }
+        .producteurs__visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.8s var(--ease-out);
+        }
+        .producteurs__visual:hover img { transform: scale(1.04); }
+
+        .prod-badge {
+            position: absolute;
+            bottom: 2.5rem;
+            right: -1px;
+            background: var(--brown);
+            color: var(--white);
+            padding: 1.4rem 1.8rem;
+            max-width: 230px;
+        }
+        .prod-badge__name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 0.3rem;
+        }
+        .prod-badge__role {
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--kiwi);
+        }
+
+        .producteurs__text {
+            padding: 5rem 5rem 5rem 6rem;
+        }
+        .producteurs__text h2 { margin-bottom: 0.6rem; }
+        .farmer-name {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--green);
+            margin-bottom: 2rem;
+        }
+        .producteurs__text p { margin-bottom: 1.3rem; }
+
+        .values {
+            list-style: none;
+            margin: 2rem 0 2.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+        .values li {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--brown);
+        }
+        .values li::before {
+            content: '';
+            width: 7px; height: 7px;
+            background: var(--kiwi);
+            flex-shrink: 0;
+        }
+
+        /* ════════════════════════════════════════════
+           SECTION 5 – CARTE
+        ════════════════════════════════════════════ */
+        .carte {
+            background: var(--cream);
+            padding: 8rem 7rem;
+            text-align: center;
+        }
+        .carte h2 { margin-bottom: 1rem; }
+        .carte .lead { max-width: 520px; margin: 0 auto 4rem; }
+
+        .carte__map {
+            width: 100%;
+            max-width: 760px;
+            margin: 0 auto 5rem;
+        }
+        .carte__map img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .regions {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        .region-card {
+            background: var(--sage);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: background 0.34s, transform 0.34s;
+        }
+        .region-card:hover { background: var(--green); transform: translateY(-4px); }
+        .region-card__ico { font-size: 2.2rem; margin-bottom: 0.9rem; }
+        .region-card__name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--brown);
+            margin-bottom: 0.3rem;
+            transition: color 0.34s;
+        }
+        .region-card__prod {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            transition: color 0.34s;
+        }
+        .region-card:hover .region-card__name,
+        .region-card:hover .region-card__prod { color: var(--white); }
+
+        /* ════════════════════════════════════════════
+           SECTION 6 – PANIERS GARNIS
+        ════════════════════════════════════════════ */
+        .paniers {
+            position: relative;
+            background: var(--green);
+            padding: 9rem 7rem;
+            overflow: hidden;
+        }
+        .paniers__glow {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 75% 50%, rgba(153,193,34,0.18) 0%, transparent 55%),
+                radial-gradient(ellipse at 15% 80%, rgba(95,56,23,0.25) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .paniers__rings {
+            position: absolute;
+            right: 8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 380px; height: 380px;
+            border-radius: 50%;
+            border: 1px solid rgba(153,193,34,0.22);
+            pointer-events: none;
+        }
+        .paniers__rings::before {
+            content: '';
+            position: absolute;
+            inset: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(153,193,34,0.14);
+        }
+        .paniers__rings::after {
+            content: '';
+            position: absolute;
+            inset: 72px;
+            border-radius: 50%;
+            border: 1px solid rgba(153,193,34,0.08);
+        }
+        .paniers__content {
+            position: relative;
+            z-index: 2;
+            max-width: 640px;
+        }
+        .paniers h2 { margin-bottom: 1.8rem; }
+        .paniers p { margin-bottom: 3rem; }
+
+        /* ════════════════════════════════════════════
+           SECTION 7 – GALERIE ÉPICERIE FINE
+        ════════════════════════════════════════════ */
+        .galerie {
+            background: var(--cream);
+            padding-top: 7rem;
+        }
+        .galerie__head {
+            padding: 0 7rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3.5rem;
+        }
+
+        .galerie__strip {
+            display: flex;
+            gap: 3px;
+            height: 500px;
+        }
+        .galerie__item {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: flex 0.55s var(--ease-out);
+        }
+        .galerie__item:hover { flex: 2.5; }
+        .galerie__item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s var(--ease-out);
+        }
+        .galerie__item:hover img { transform: scale(1.04); }
+
+        .galerie__item-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2.5rem 1.5rem 1.5rem;
+            background: linear-gradient(to top, rgba(95,56,23,0.85) 0%, transparent 100%);
+            color: white;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.4s, transform 0.4s var(--ease-out);
+            white-space: nowrap;
+        }
+        .galerie__item:hover .galerie__item-label { opacity: 1; transform: none; }
+
+        /* ════════════════════════════════════════════
+           FOOTER
+        ════════════════════════════════════════════ */
+        .footer {
+            background: var(--brown);
+            padding: 6rem 7rem 3rem;
+        }
+        .footer__top {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr 1fr 1fr;
+            gap: 4rem;
+            padding-bottom: 4rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .footer__brand-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+        }
+        .footer__brand-sub {
+            font-size: 0.55rem;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--kiwi);
+            display: block;
+            margin-top: 0.3rem;
+            margin-bottom: 1.5rem;
+        }
+        .footer__brand p {
+            font-size: 0.88rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.48);
+            margin-bottom: 2rem;
+        }
+        .footer__socials { display: flex; gap: 0.7rem; }
+        .social {
+            width: 38px; height: 38px;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            transition: background 0.3s, color 0.3s, border-color 0.3s;
+        }
+        .social:hover { background: var(--kiwi); color: var(--brown); border-color: var(--kiwi); }
+
+        .footer__col h4 {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 1.4rem;
+        }
+        .footer__col ul { list-style: none; }
+        .footer__col ul li { margin-bottom: 0.75rem; }
+        .footer__col ul li a {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.46);
+            transition: color 0.3s;
+        }
+        .footer__col ul li a:hover { color: var(--kiwi); }
+        .footer__address {
+            font-size: 0.88rem;
+            line-height: 1.85;
+            color: rgba(255,255,255,0.46);
+        }
+        .footer__hours {
+            font-size: 0.82rem;
+            line-height: 1.9;
+            color: rgba(255,255,255,0.44);
+            margin-top: 1rem;
+        }
+        .footer__hours strong { color: var(--kiwi); font-weight: 600; }
+
+        .footer__bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer__bottom p, .footer__bottom a {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.28);
+        }
+        .footer__bottom a { transition: color 0.3s; }
+        .footer__bottom a:hover { color: var(--kiwi); }
+        .footer__bottom-links { display: flex; gap: 1.5rem; }
+
+        /* ════════════════════════════════════════════
+           SCROLL REVEAL
+        ════════════════════════════════════════════ */
+        .reveal,
+        .reveal-l,
+        .reveal-r {
+            opacity: 0;
+            transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out);
+        }
+        .reveal   { transform: translateY(42px); }
+        .reveal-l { transform: translateX(-42px); }
+        .reveal-r { transform: translateX(42px); }
+
+        .reveal.in,
+        .reveal-l.in,
+        .reveal-r.in { opacity: 1; transform: none; }
+
+        /* ════════════════════════════════════════════
+           RESPONSIVE
+        ════════════════════════════════════════════ */
+        /* ════════════════════════════════════════════
+           SECTION PANIERS – OVALE
+        ════════════════════════════════════════════ */
+        .paniers-oval-wrap {
+            background: var(--sage);
+            padding: 5rem 2rem;
+        }
+        .paniers-oval {
+            max-width: 1150px;
+            margin: 0 auto;
+            background: var(--brown);
+            border-radius: 50%;
+            padding: 4.5rem 9rem 4.5rem 6rem;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            min-height: 460px;
+        }
+        .paniers-oval__img {
+            flex: 0 0 38%;
+            max-width: 400px;
+        }
+        .paniers-oval__img img {
+            width: 100%;
+            border-radius: 6px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            display: block;
+        }
+        .paniers-oval__text {
+            flex: 1;
+        }
+        .paniers-oval__text .display {
+            margin-top: 0.4rem;
+        }
+
+        @media (max-width: 1200px) {
+            .nav { padding: 0 3rem; }
+            .promesse__text { padding: 5rem 3.5rem 5rem 3rem; }
+            .hero__content { padding: 0 4rem; padding-top: 5rem; }
+            .hero__dots { left: 4rem; }
+            .actualites, .carte, .footer { padding-left: 3rem; padding-right: 3rem; }
+            .galerie__head { padding: 0 3rem; }
+            .producteurs__text { padding: 4rem 4rem 4rem 4rem; }
+            .grid-head { padding: 5rem 3rem 3rem; }
+            .paniers-oval { padding: 4rem 6rem 4rem 5rem; }
+        }
+
+        @media (max-width: 1024px) {
+            .promesse { grid-template-columns: 1fr; }
+            .promesse__visual { min-height: 360px; }
+            .promesse__badge { left: 2rem; }
+
+            .producteurs { grid-template-columns: 1fr; }
+            .producteurs__visual { min-height: 380px; }
+            .prod-badge { right: 2rem; left: auto; }
+            .producteurs__text { padding: 4rem 3rem; }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(4, 250px);
+            }
+            .regions { grid-template-columns: repeat(2, 1fr); }
+            .footer__top { grid-template-columns: 1fr 1fr; }
+
+            .blog-card { flex: 0 0 calc(50% - 1rem); }
+
+            .paniers-oval {
+                border-radius: 40px;
+                padding: 3.5rem 4rem;
+                min-height: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav__menu   { display: none; }
+            .nav__burger { display: flex; }
+            .nav         { padding: 0 1.5rem; }
+
+            .hero__content { padding: 0 1.5rem; padding-top: 5rem; }
+            .hero__dots    { left: 1.5rem; }
+            .hero__arrow   { display: none; }
+            .hero__scroll  { display: none; }
+
+            .promesse__text { padding: 4rem 1.5rem; }
+            .actualites, .carte, .footer { padding: 4rem 1.5rem; }
+            .grid-head { padding: 4rem 1.5rem 2rem; }
+            .galerie__head { padding: 0 1.5rem; margin-bottom: 2rem; }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(4, 190px);
+            }
+
+            .galerie__strip { flex-direction: column; height: auto; }
+            .galerie__item  { height: 220px; }
+            .galerie__item:hover { flex: 1; }
+            .galerie__item-label { opacity: 1; transform: none; }
+
+            .regions { grid-template-columns: 1fr 1fr; }
+            /* ancienne section paniers supprimée */
+
+            .footer__top { grid-template-columns: 1fr; gap: 2rem; }
+            .footer__bottom { flex-direction: column; gap: 1rem; text-align: center; }
+
+            .actualites, .galerie { padding-top: 4rem; }
+            .blog-card { flex: 0 0 calc(88% - 1rem); }
+
+            .promesse__stats { flex-wrap: wrap; gap: 2rem; }
+
+            .paniers-oval-wrap { padding: 3rem 1rem; }
+            .paniers-oval {
+                border-radius: 24px;
+                padding: 2.5rem 1.5rem;
+                flex-direction: column;
+                gap: 2rem;
+                min-height: auto;
+            }
+            .paniers-oval__img { max-width: 100%; flex: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════════ -->
+<nav class="nav" id="nav">
+    <div class="nav__inner">
+        <a href="#accueil" class="nav__logo">
+            <span class="nav__logo-name">Le Fruitier</span>
+            <span class="nav__logo-sub">Légumes · Fruits · Produits Régionaux</span>
+        </a>
+
+        <ul class="nav__menu">
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#produits">Nos Produits</a></li>
+            <li><a href="#cadeaux">Cadeaux</a></li>
+            <li><a href="#pros">Professionnels</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#a-propos">À Propos</a></li>
+            <li><a href="#contact" class="nav__cta">Contactez-nous</a></li>
+        </ul>
+
+        <button class="nav__burger" id="burger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer" id="drawer">
+    <button class="drawer__close" id="drawerClose">✕</button>
+    <ul class="drawer__menu">
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#produits">Nos Produits</a></li>
+        <li><a href="#cadeaux">Cadeaux</a></li>
+        <li><a href="#pros">Professionnels</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#a-propos">À Propos</a></li>
+        <li><a href="#contact">Contactez-nous</a></li>
+    </ul>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION HERO – CARROUSEL
+═══════════════════════════════════════════════ -->
+<section class="hero" id="accueil">
+
+    <div class="hero__slide is-active" id="slide-0">
+        <img src="image/premierheader.png" alt="Devanture du Fruitier à La Destrousse">
+        <div class="hero__overlay"></div>
+    </div>
+    <div class="hero__slide" id="slide-1">
+        <img src="image/deuxiemeheader.png" alt="Intérieur de la boutique Le Fruitier">
+        <div class="hero__overlay"></div>
+    </div>
+
+    <div class="hero__content">
+        <p class="hero__eyebrow">La Destrousse · Provence · Depuis 2010</p>
+        <h1 class="hero__title">Le comptoir de<br><em>saveurs locales</em><br>et d'épicerie fine</h1>
+        <p class="hero__sub">Du repas de tous les jours aux instants d'exception, votre primeur vous accompagne avec des fruits et légumes frais, savoureux et accessibles.</p>
+        <div class="hero__actions">
+            <a href="#produits" class="btn btn--kiwi">
+                Découvrir nos produits
+                <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#contact" class="btn btn--ghost" style="border-color:rgba(255,255,255,0.5);color:white;">
+                Nous trouver
+            </a>
+        </div>
+    </div>
+
+    <button class="hero__arrow hero__arrow--prev" aria-label="Précédent" id="heroPrev">
+        <svg class="arr" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </button>
+    <button class="hero__arrow hero__arrow--next" aria-label="Suivant" id="heroNext">
+        <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+
+    <div class="hero__dots">
+        <button class="hero__dot is-active" aria-label="Diapositive 1" data-slide="0"></button>
+        <button class="hero__dot" aria-label="Diapositive 2" data-slide="1"></button>
+    </div>
+
+    <div class="hero__scroll">
+        <div class="hero__scroll-line"></div>
+        Défiler
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 1 – LA PROMESSE
+═══════════════════════════════════════════════ -->
+<section class="promesse" id="a-propos">
+    <div class="promesse__text reveal-l">
+        <span class="label">Notre Engagement</span>
+        <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,2.8vw,3rem);font-weight:600;line-height:1.15;color:var(--brown);margin-bottom:1.8rem;">
+            LE COMPTOIR DE SAVEURS LOCALES ET D'ÉPICERIE FINE
+        </h1>
+        <p class="lead">Du repas de tous les jours aux instants d'exception, Le Fruitier vous accompagne au quotidien. Notre premier engagement&nbsp;? Vous offrir des fruits et légumes frais, savoureux et accessibles pour régaler toute la famille midi et soir.</p>
+        <p class="lead">Mais parce que la gourmandise n'a pas de limite, notre boutique abrite aussi un coin épicerie fine et terroir unique à La Destrousse.</p>
+
+        <div class="promesse__stats">
+            <div>
+                <span class="stat__num">+200</span>
+                <span class="stat__lbl">Références en boutique</span>
+            </div>
+            <div>
+                <span class="stat__num">100%</span>
+                <span class="stat__lbl">Produits locaux &amp; régionaux</span>
+            </div>
+            <div>
+                <span class="stat__num">7j/7</span>
+                <span class="stat__lbl">Ouvert pour vous</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="promesse__visual reveal-r">
+        <img src="image/vueinterieurmagasin.png" alt="Vue intérieure de la boutique Le Fruitier">
+        <div class="promesse__badge">
+            <strong>Le Fruitier</strong>
+            <span>La Destrousse · PACA</span>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 2 – ACTUALITÉS
+═══════════════════════════════════════════════ -->
+<section class="actualites" id="blog">
+    <div class="actualites__head">
+        <div>
+            <span class="label label--kiwi">Actualités</span>
+            <h2 class="display display--white">L'ACTUALITÉ<br>CHEZ LE FRUITIER</h2>
+        </div>
+        <div class="blog-btns">
+            <button class="blog-btn" id="blogPrev" aria-label="Article précédent">
+                <svg class="arr" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+            <button class="blog-btn" id="blogNext" aria-label="Article suivant">
+                <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="blog-track">
+        <div class="blog-carousel" id="blogCarousel">
+
+            <article class="blog-card">
+                <img src="image/rayon avec plein de chose.png" alt="Fête des Mères" class="blog-card__img">
+                <div class="blog-card__body">
+                    <p class="blog-card__tag">Événement · Mai 2025</p>
+                    <h3 class="blog-card__title">ON FÊTE LES MÈRES CHEZ LE FRUITIER&nbsp;!</h3>
+                    <p class="blog-card__excerpt">Samedi 23 mai nous recevions un bijoutier de la région qui crée des bijoux spéciaux pour la fête des mères…</p>
+                    <a href="#" class="blog-link">
+                        EN SAVOIR +
+                        <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <img src="image/gros plan sur legume.png" alt="Légumes d'été" class="blog-card__img">
+                <div class="blog-card__body">
+                    <p class="blog-card__tag">Saison · Juin 2025</p>
+                    <h3 class="blog-card__title">LES LÉGUMES D'ÉTÉ SONT ARRIVÉS</h3>
+                    <p class="blog-card__excerpt">Tomates, courgettes, aubergines… La saison estivale bat son plein&nbsp;! Retrouvez le meilleur de nos maraîchers.</p>
+                    <a href="#" class="blog-link">
+                        EN SAVOIR +
+                        <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <img src="image/rangébouteillesvin.png" alt="Cave à vins" class="blog-card__img">
+                <div class="blog-card__body">
+                    <p class="blog-card__tag">Dégustation · Juillet 2025</p>
+                    <h3 class="blog-card__title">NOUVEAUX MILLÉSIMES EN CAVE</h3>
+                    <p class="blog-card__excerpt">Notre sélection de vins provençaux s'enrichit. Venez découvrir nos coups de cœur du moment en boutique.</p>
+                    <a href="#" class="blog-link">
+                        EN SAVOIR +
+                        <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <img src="image/gros plan sur pot de miel.png" alt="Miels artisanaux" class="blog-card__img">
+                <div class="blog-card__body">
+                    <p class="blog-card__tag">Produits · Août 2025</p>
+                    <h3 class="blog-card__title">NOS MIELS ARTISANAUX DE PROVENCE</h3>
+                    <p class="blog-card__excerpt">Lavande, thym, garrigue… Des miels récoltés par nos apiculteurs partenaires. La Provence dans un pot.</p>
+                    <a href="#" class="blog-link">
+                        EN SAVOIR +
+                        <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 3 – GRILLE PRODUITS
+═══════════════════════════════════════════════ -->
+<section id="produits">
+    <div class="grid-head reveal">
+        <span class="label">Explorer</span>
+        <h2 class="display">NOS UNIVERS</h2>
+    </div>
+
+    <div class="product-grid">
+
+        <div class="pcell">
+            <img src="image/bacpleindelegume.png" alt="Fruits et Légumes de Saison">
+            <div class="pcell__overlay">
+                <p class="pcell__tag">Fraîcheur</p>
+                <h3 class="pcell__title">Fruits &amp; Légumes de Saison</h3>
+            </div>
+            <div class="pcell__arrow"><svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+
+        <div class="pcell">
+            <img src="image/rayon de miel.png" alt="Pour Offrir">
+            <div class="pcell__overlay">
+                <p class="pcell__tag">Cadeaux</p>
+                <h3 class="pcell__title">Pour Offrir</h3>
+            </div>
+            <div class="pcell__arrow"><svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+
+        <div class="pcell">
+            <img src="image/rangébouteillesvin.png" alt="Notre Cave à Vins">
+            <div class="pcell__overlay">
+                <p class="pcell__tag">Dégustation</p>
+                <h3 class="pcell__title">Notre Cave à Vins</h3>
+            </div>
+            <div class="pcell__arrow"><svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+
+        <div class="pcell">
+            <img src="image/planrayonpotdetamari.png" alt="Épicerie Fine">
+            <div class="pcell__overlay">
+                <p class="pcell__tag">Terroir</p>
+                <h3 class="pcell__title">Épicerie Fine</h3>
+            </div>
+            <div class="pcell__arrow"><svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+
+        <div class="pcell">
+            <img src="image/gros plan sur des paquet de confiseries.png" alt="Confiserie">
+            <div class="pcell__overlay">
+                <p class="pcell__tag">Gourmandise</p>
+                <h3 class="pcell__title">Confiserie</h3>
+            </div>
+            <div class="pcell__arrow"><svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+
+        <div class="pcell">
+            <img src="image/bacdelegume.png" alt="Produits de notre Région">
+            <div class="pcell__overlay">
+                <p class="pcell__tag">Local</p>
+                <h3 class="pcell__title">Produits de notre Région</h3>
+            </div>
+            <div class="pcell__arrow"><svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+
+        <div class="pcell">
+            <img src="image/bouteil de kom buncha.png" alt="Produits d'Exceptions">
+            <div class="pcell__overlay">
+                <p class="pcell__tag">Exclusivité</p>
+                <h3 class="pcell__title">Produits d'Exceptions</h3>
+            </div>
+            <div class="pcell__arrow"><svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+
+        <div class="pcell" id="pros">
+            <img src="image/rayon avec plein de chose.png" alt="Pour les Professionnels">
+            <div class="pcell__overlay">
+                <p class="pcell__tag">B2B</p>
+                <h3 class="pcell__title">Pour les Professionnels</h3>
+            </div>
+            <div class="pcell__arrow"><svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 4 – ZOOM PRODUCTEURS
+═══════════════════════════════════════════════ -->
+<section class="producteurs">
+
+    <div class="producteurs__visual reveal-l">
+        <img src="image/bac a legume.png" alt="Bac de légumes frais — Rémi Laurent">
+        <div class="prod-badge">
+            <div class="prod-badge__name">Rémi Laurent</div>
+            <div class="prod-badge__role">Maraîcher · La Destrousse</div>
+        </div>
+    </div>
+
+    <div class="producteurs__text reveal-r">
+        <span class="label">Nos Agriculteurs</span>
+        <h2 class="display">ZOOM SUR NOS AGRICULTEURS PARTENAIRES</h2>
+        <p class="farmer-name">RÉMI LAURENT – MARAÎCHER FRAISES ET TOMATES</p>
+        <p class="lead">Rémy est très éthique dans sa façon de cultiver les tomates. Il privilégie des pratiques durables et veille à ce que chaque étape de son processus agricole respecte l'environnement.</p>
+        <p class="lead">De la sélection de graines non-OGM à l'utilisation d'engrais naturels, il s'engage à maintenir la santé du sol et de l'écosystème environnant.</p>
+        <ul class="values">
+            <li>Graines 100% non-OGM</li>
+            <li>Engrais naturels &amp; compost</li>
+            <li>Agriculture raisonnée locale</li>
+            <li>Circuit court · zéro kilomètre</li>
+        </ul>
+        <a href="#" class="btn btn--dark">
+            DÉCOUVREZ NOS AGRICULTEURS
+            <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 5 – PANIERS GARNIS (OVALE)
+═══════════════════════════════════════════════ -->
+<section class="paniers-oval-wrap" id="cadeaux">
+    <div class="paniers-oval reveal">
+        <div class="paniers-oval__img">
+            <img src="image/Faites plaisir et faites vous plaisir.png" alt="Paniers garnis Le Fruitier – fruits, vins et confiseries">
+        </div>
+        <div class="paniers-oval__text">
+            <span class="label label--light">Paniers Garnis</span>
+            <h2 class="display display--white">FAITES PLAISIR ET FAITES-VOUS PLAISIR</h2>
+            <p style="color:rgba(255,255,255,0.78);font-size:1rem;line-height:1.82;margin:1.6rem 0 2.4rem;">Pourquoi attendre une occasion spéciale pour se faire plaisir&nbsp;? Craquez pour nos paniers gourmands remplis de trésors à partager — entre bons vins, verrines fines et confiseries artisanales.</p>
+            <a href="#" class="btn btn--kiwi">
+                DÉCOUVREZ NOS PANIERS
+                <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 6 – CARTE DES PRODUITS
+═══════════════════════════════════════════════ -->
+<section class="carte">
+    <span class="label reveal">Traçabilité</span>
+    <h2 class="display reveal">LA CARTE DE NOS PRODUITS</h2>
+    <p class="lead reveal">Découvrez l'origine de chaque produit chez Le Fruitier. Nous valorisons le circuit court et les producteurs de la région Provence-Alpes-Côte d'Azur.</p>
+
+    <div class="carte__map reveal">
+        <img src="image/carteprovenance.png" alt="Carte de provenance des produits – Provence PACA">
+    </div>
+
+    <div class="regions">
+        <div class="region-card reveal">
+            <div class="region-card__ico">🍅</div>
+            <div class="region-card__name">Bouches-du-Rhône</div>
+            <div class="region-card__prod">Tomates · Courgettes · Aubergines</div>
+        </div>
+        <div class="region-card reveal">
+            <div class="region-card__ico">🍇</div>
+            <div class="region-card__name">Var</div>
+            <div class="region-card__prod">Vins de Provence · Figues</div>
+        </div>
+        <div class="region-card reveal">
+            <div class="region-card__ico">🫒</div>
+            <div class="region-card__name">Alpes-de-Haute-Provence</div>
+            <div class="region-card__prod">Huile d'olive · Lavande · Miel</div>
+        </div>
+        <div class="region-card reveal">
+            <div class="region-card__ico">🍑</div>
+            <div class="region-card__name">Vaucluse</div>
+            <div class="region-card__prod">Melons · Fraises · Cerises</div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 7 – GALERIE ÉPICERIE FINE
+═══════════════════════════════════════════════ -->
+<section class="galerie">
+    <div class="galerie__head reveal">
+        <div>
+            <span class="label">Épicerie Fine</span>
+            <h2 class="display">NOTRE SÉLECTION<br>D'EXCEPTION</h2>
+        </div>
+        <a href="#produits" class="btn btn--ghost">Voir tous les produits</a>
+    </div>
+
+    <div class="galerie__strip">
+        <div class="galerie__item">
+            <img src="image/planrayonpotdetamari.png" alt="Produits Tamaris">
+            <div class="galerie__item-label">Tartinables Tamaris</div>
+        </div>
+        <div class="galerie__item">
+            <img src="image/rayon de miel.png" alt="Rayon Miel">
+            <div class="galerie__item-label">Miels de Provence</div>
+        </div>
+        <div class="galerie__item">
+            <img src="image/gros plan sur pot de miel.png" alt="Pot de Miel">
+            <div class="galerie__item-label">Miels Artisanaux</div>
+        </div>
+        <div class="galerie__item">
+            <img src="image/rangébouteillesvin.png" alt="Cave à Vins">
+            <div class="galerie__item-label">Cave à Vins</div>
+        </div>
+        <div class="galerie__item">
+            <img src="image/bouteil de kom buncha.png" alt="Kombucha">
+            <div class="galerie__item-label">Boissons d'Exception</div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<footer class="footer" id="contact">
+    <div class="footer__top">
+
+        <div class="footer__brand">
+            <div class="footer__brand-name">Le Fruitier</div>
+            <span class="footer__brand-sub">Légumes · Fruits · Produits Régionaux</span>
+            <p>Votre primeur de confiance à La Destrousse. Fraîcheur, terroir et gourmandise au cœur de la Provence.</p>
+            <div class="footer__socials">
+                <a href="#" class="social" aria-label="Facebook">f</a>
+                <a href="#" class="social" aria-label="Instagram">ig</a>
+                <a href="#" class="social" aria-label="TikTok">tt</a>
+            </div>
+        </div>
+
+        <div class="footer__col">
+            <h4>Navigation</h4>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#produits">Nos Produits</a></li>
+                <li><a href="#cadeaux">Cadeaux &amp; Paniers</a></li>
+                <li><a href="#pros">Professionnels</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#a-propos">À Propos</a></li>
+            </ul>
+        </div>
+
+        <div class="footer__col">
+            <h4>Nos Univers</h4>
+            <ul>
+                <li><a href="#">Fruits &amp; Légumes</a></li>
+                <li><a href="#">Épicerie Fine</a></li>
+                <li><a href="#">Cave à Vins</a></li>
+                <li><a href="#">Confiserie</a></li>
+                <li><a href="#">Paniers Garnis</a></li>
+                <li><a href="#">Produits Régionaux</a></li>
+            </ul>
+        </div>
+
+        <div class="footer__col">
+            <h4>Nous Trouver</h4>
+            <div class="footer__address">
+                [ Adresse à compléter ]<br>
+                La Destrousse<br>
+                13112 · Bouches-du-Rhône
+            </div>
+            <div class="footer__hours">
+                <strong>Lundi – Samedi</strong><br>
+                [ Horaires à compléter ]<br><br>
+                <strong>Dimanche</strong><br>
+                [ Horaires à compléter ]
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer__bottom">
+        <p>© 2025 Le Fruitier · La Destrousse · Tous droits réservés</p>
+        <div class="footer__bottom-links">
+            <a href="#">Mentions légales</a>
+            <a href="#">Confidentialité</a>
+        </div>
+    </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════════ -->
+<script>
+    /* ─── HERO CAROUSEL ─────────────────────────── */
+    const TOTAL = 2;
+    let cur = 0;
+    let timer;
+
+    function goTo(n) {
+        document.getElementById('slide-' + cur).classList.remove('is-active');
+        document.querySelectorAll('.hero__dot')[cur].classList.remove('is-active');
+        cur = (n + TOTAL) % TOTAL;
+        document.getElementById('slide-' + cur).classList.add('is-active');
+        document.querySelectorAll('.hero__dot')[cur].classList.add('is-active');
+    }
+
+    function next() { goTo(cur + 1); resetTimer(); }
+    function prev() { goTo(cur - 1); resetTimer(); }
+    function resetTimer() { clearInterval(timer); timer = setInterval(next, 5500); }
+
+    timer = setInterval(next, 5500);
+
+    document.getElementById('heroNext').addEventListener('click', next);
+    document.getElementById('heroPrev').addEventListener('click', prev);
+    document.querySelectorAll('.hero__dot').forEach(d => {
+        d.addEventListener('click', () => { goTo(+d.dataset.slide); resetTimer(); });
+    });
+
+    /* Touch swipe on hero */
+    let tx = 0;
+    const heroEl = document.querySelector('.hero');
+    heroEl.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+    heroEl.addEventListener('touchend',   e => {
+        const diff = tx - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 48) { diff > 0 ? next() : prev(); }
+    }, { passive: true });
+
+    /* ─── NAVBAR ────────────────────────────────── */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('is-scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    /* ─── MOBILE DRAWER ─────────────────────────── */
+    const drawer = document.getElementById('drawer');
+    document.getElementById('burger').addEventListener('click',      () => drawer.classList.add('is-open'));
+    document.getElementById('drawerClose').addEventListener('click', () => drawer.classList.remove('is-open'));
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => drawer.classList.remove('is-open')));
+
+    /* ─── BLOG CAROUSEL ─────────────────────────── */
+    let blogOff = 0;
+    const blogTrack = document.getElementById('blogCarousel');
+
+    function visibleCards() {
+        if (window.innerWidth <= 768)  return 1;
+        if (window.innerWidth <= 1024) return 2;
+        return 3;
+    }
+
+    function slideBlog(dir) {
+        const card = blogTrack.querySelector('.blog-card');
+        const step = card.offsetWidth + 32; // 2rem gap
+        const maxOff = (blogTrack.children.length - visibleCards()) * step;
+        blogOff = Math.max(0, Math.min(blogOff + dir * step, maxOff));
+        blogTrack.style.transform = `translateX(-${blogOff}px)`;
+    }
+
+    document.getElementById('blogPrev').addEventListener('click', () => slideBlog(-1));
+    document.getElementById('blogNext').addEventListener('click', () => slideBlog(1));
+
+    /* Touch swipe on blog */
+    let bx = 0;
+    blogTrack.addEventListener('touchstart', e => { bx = e.touches[0].clientX; }, { passive: true });
+    blogTrack.addEventListener('touchend',   e => {
+        const d = bx - e.changedTouches[0].clientX;
+        if (Math.abs(d) > 40) slideBlog(d > 0 ? 1 : -1);
+    }, { passive: true });
+
+    /* ─── SCROLL REVEAL ─────────────────────────── */
+    const revealEls = document.querySelectorAll('.reveal, .reveal-l, .reveal-r');
+    const revealObs = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('in'), i * 80);
+                revealObs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => revealObs.observe(el));
+</script>
+
+</body>
+</html>
