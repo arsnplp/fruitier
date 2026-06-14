@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos – Le Fruitier · La Destrousse</title>
+    <meta name="description" content="Découvrez l'histoire du Fruitier à La Destrousse : notre engagement pour des produits locaux, nos agriculteurs partenaires et la carte de provenance de nos produits.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ─── VARIABLES ─────────────────────────────── */
+        :root {
+            --olive:      #8B8F47;
+            --green:      #616D29;
+            --kiwi:       #99C122;
+            --sage:       #D2D4C1;
+            --cream:      #F5F5EF;
+            --brown:      #5F3817;
+            --white:      #ffffff;
+            --text-muted: rgba(95,56,23,0.6);
+            --ease-out:   cubic-bezier(0.22,1,0.36,1);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--cream);
+            color: var(--brown);
+            overflow-x: hidden;
+        }
+
+        img { display: block; max-width: 100%; }
+        a   { text-decoration: none; color: inherit; }
+
+        /* ─── LABEL ─────────────────────────────────── */
+        .label {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            padding: 0.45rem 1rem;
+            background: var(--sage);
+            color: var(--green);
+            margin-bottom: 1.4rem;
+        }
+
+        /* ─── DISPLAY H2 ────────────────────────────── */
+        h2.display {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3.5vw, 3.4rem);
+            font-weight: 600;
+            line-height: 1.1;
+            color: var(--brown);
+        }
+
+        .lead {
+            font-size: 1rem;
+            line-height: 1.88;
+            color: var(--text-muted);
+        }
+
+        /* ─── BOUTONS ───────────────────────────────── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 1rem 2.2rem;
+            transition: background 0.28s, color 0.28s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn svg { flex-shrink: 0; transition: transform 0.28s; }
+        .btn:hover svg { transform: translateX(4px); }
+        .btn--dark  { background: var(--brown); color: var(--white); }
+        .btn--dark:hover  { background: var(--green); }
+        .btn--ghost {
+            background: transparent;
+            border: 1.5px solid var(--brown);
+            color: var(--brown);
+        }
+        .btn--ghost:hover { background: var(--brown); color: var(--white); }
+
+        .arr {
+            width: 15px; height: 15px;
+            fill: none; stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        /* ════════════════════════════════════════════
+           NAVIGATION (toujours en mode scrollé ici)
+        ════════════════════════════════════════════ */
+        .nav {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 900;
+            padding: 0 5rem;
+            background: rgba(245,245,239,0.97);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 2px 28px rgba(95,56,23,0.07);
+        }
+        .nav__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.4rem 0;
+            border-bottom: 1px solid var(--sage);
+        }
+        .nav__logo { display: flex; flex-direction: column; }
+        .nav__logo-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: var(--brown);
+            letter-spacing: 0.04em;
+            line-height: 1;
+        }
+        .nav__logo-sub {
+            font-size: 0.52rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--olive);
+        }
+        .nav__menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 2.2rem;
+        }
+        .nav__menu a {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--brown);
+            transition: color 0.3s;
+            position: relative;
+        }
+        .nav__menu a:not(.nav__cta)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 1.5px;
+            background: var(--kiwi);
+            transition: width 0.3s var(--ease-out);
+        }
+        .nav__menu a:not(.nav__cta):hover::after { width: 100%; }
+        .nav__menu a.active { color: var(--green); }
+        .nav__menu a.active::after { width: 100%; }
+
+        .nav__cta {
+            background: var(--kiwi) !important;
+            color: var(--brown) !important;
+            padding: 0.55rem 1.3rem;
+        }
+        .nav__cta:hover { background: var(--brown) !important; color: var(--white) !important; }
+
+        .nav__burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+        .nav__burger span { display: block; width: 24px; height: 2px; background: var(--brown); }
+
+        /* ─── MOBILE DRAWER ─────────────────────────── */
+        .drawer {
+            position: fixed;
+            inset: 0;
+            background: var(--brown);
+            z-index: 950;
+            display: flex;
+            flex-direction: column;
+            padding: 5rem 2.5rem 3rem;
+            transform: translateX(100%);
+            transition: transform 0.42s var(--ease-out);
+        }
+        .drawer.is-open { transform: none; }
+        .drawer__close {
+            position: absolute;
+            top: 1.5rem; right: 1.5rem;
+            background: none; border: none;
+            color: white; font-size: 1.6rem;
+            cursor: pointer; line-height: 1;
+        }
+        .drawer__menu { list-style: none; }
+        .drawer__menu li { border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .drawer__menu a {
+            display: block;
+            padding: 1.1rem 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem; font-weight: 600;
+            color: var(--white);
+            transition: color 0.3s;
+        }
+        .drawer__menu a:hover { color: var(--kiwi); }
+
+        /* ════════════════════════════════════════════
+           PAGE HEADER
+        ════════════════════════════════════════════ */
+        .page-header {
+            background: var(--green);
+            padding: 10rem 7rem 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-header::after {
+            content: '';
+            position: absolute;
+            right: -100px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 500px; height: 500px;
+            border-radius: 50%;
+            border: 1px solid rgba(153,193,34,0.2);
+            pointer-events: none;
+        }
+        .page-header__bread {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1.2rem;
+        }
+        .page-header__bread a {
+            color: rgba(255,255,255,0.5);
+            transition: color 0.3s;
+        }
+        .page-header__bread a:hover { color: var(--kiwi); }
+        .page-header__bread span { margin: 0 0.6rem; }
+        .page-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.05;
+            max-width: 700px;
+        }
+        .page-header__sub {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.65);
+            margin-top: 1.4rem;
+            max-width: 480px;
+            line-height: 1.7;
+        }
+
+        /* ════════════════════════════════════════════
+           SECTION – LE COMPTOIR
+        ════════════════════════════════════════════ */
+        .comptoir {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 6rem;
+            align-items: center;
+            padding: 8rem 7rem;
+            background: var(--white);
+        }
+        .comptoir__img img {
+            width: 100%;
+            border-radius: 28px;
+            box-shadow: 0 24px 60px rgba(95,56,23,0.14);
+        }
+        .comptoir__text .label {
+            background: rgba(153,193,34,0.15);
+            color: var(--green);
+        }
+        .comptoir__text h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3vw, 3.1rem);
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--brown);
+            margin-bottom: 2rem;
+        }
+        .comptoir__text h1 .accent { color: var(--kiwi); }
+        .comptoir__text p {
+            font-size: 1rem;
+            line-height: 1.9;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+        }
+        .comptoir__text p:last-of-type { margin-bottom: 0; }
+
+        /* ════════════════════════════════════════════
+           SECTION – PRODUCTEURS
+        ════════════════════════════════════════════ */
+        .producteurs {
+            background: var(--sage);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            min-height: 680px;
+        }
+        .producteurs__visual {
+            position: relative;
+            height: 100%;
+            min-height: 600px;
+            overflow: hidden;
+        }
+        .producteurs__visual img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s var(--ease-out);
+        }
+        .producteurs__visual:hover img { transform: scale(1.04); }
+
+        .prod-badge {
+            position: absolute;
+            bottom: 2.5rem; right: -1px;
+            background: var(--brown);
+            color: var(--white);
+            padding: 1.4rem 1.8rem;
+            max-width: 230px;
+        }
+        .prod-badge__name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem; font-weight: 700;
+            line-height: 1.1; margin-bottom: 0.3rem;
+        }
+        .prod-badge__role {
+            font-size: 0.58rem; font-weight: 700;
+            letter-spacing: 0.18em; text-transform: uppercase;
+            color: var(--kiwi);
+        }
+        .producteurs__text {
+            padding: 5rem 5rem 5rem 6rem;
+        }
+        .producteurs__text h2 { margin-bottom: 0.6rem; }
+        .farmer-name {
+            font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 0.16em; text-transform: uppercase;
+            color: var(--green); margin-bottom: 2rem;
+        }
+        .producteurs__text p { margin-bottom: 1.3rem; }
+
+        .values { list-style: none; margin: 2rem 0 2.8rem; display: flex; flex-direction: column; gap: 0.85rem; }
+        .values li { display: flex; align-items: center; gap: 0.9rem; font-size: 0.92rem; font-weight: 600; color: var(--brown); }
+        .values li::before { content: ''; width: 7px; height: 7px; background: var(--kiwi); flex-shrink: 0; }
+
+        /* ════════════════════════════════════════════
+           SECTION – CARTE
+        ════════════════════════════════════════════ */
+        .carte {
+            background: var(--cream);
+            padding: 8rem 7rem;
+            text-align: center;
+        }
+        .carte h2 { margin-bottom: 1rem; }
+        .carte .lead { max-width: 520px; margin: 0 auto 4rem; }
+
+        .carte__map {
+            width: 100%;
+            max-width: 760px;
+            margin: 0 auto 5rem;
+        }
+        .carte__map img { width: 100%; height: auto; display: block; }
+
+        .regions {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        .region-card {
+            background: var(--sage);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: background 0.34s, transform 0.34s;
+        }
+        .region-card:hover { background: var(--green); transform: translateY(-4px); }
+        .region-card__ico { font-size: 2.2rem; margin-bottom: 0.9rem; }
+        .region-card__name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem; font-weight: 600;
+            color: var(--brown); margin-bottom: 0.3rem;
+            transition: color 0.34s;
+        }
+        .region-card__prod { font-size: 0.72rem; color: var(--text-muted); transition: color 0.34s; }
+        .region-card:hover .region-card__name,
+        .region-card:hover .region-card__prod { color: var(--white); }
+
+        /* ════════════════════════════════════════════
+           FOOTER
+        ════════════════════════════════════════════ */
+        .footer {
+            background: var(--brown);
+            padding: 6rem 7rem 3rem;
+        }
+        .footer__top {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr 1fr 1fr;
+            gap: 4rem;
+            padding-bottom: 4rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .footer__brand-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem; font-weight: 700; color: var(--white); line-height: 1;
+        }
+        .footer__brand-sub {
+            font-size: 0.55rem; letter-spacing: 0.24em; text-transform: uppercase;
+            color: var(--kiwi); display: block; margin-top: 0.3rem; margin-bottom: 1.5rem;
+        }
+        .footer__brand p { font-size: 0.88rem; line-height: 1.8; color: rgba(255,255,255,0.48); margin-bottom: 2rem; }
+        .footer__socials { display: flex; gap: 0.7rem; }
+        .social {
+            width: 38px; height: 38px;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.55);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.8rem; font-weight: 700;
+            transition: background 0.3s, color 0.3s, border-color 0.3s;
+        }
+        .social:hover { background: var(--kiwi); color: var(--brown); border-color: var(--kiwi); }
+        .footer__col h4 {
+            font-size: 0.65rem; font-weight: 700;
+            letter-spacing: 0.22em; text-transform: uppercase;
+            color: var(--white); margin-bottom: 1.4rem;
+        }
+        .footer__col ul { list-style: none; }
+        .footer__col ul li { margin-bottom: 0.75rem; }
+        .footer__col ul li a { font-size: 0.88rem; color: rgba(255,255,255,0.46); transition: color 0.3s; }
+        .footer__col ul li a:hover { color: var(--kiwi); }
+        .footer__address { font-size: 0.88rem; line-height: 1.85; color: rgba(255,255,255,0.46); }
+        .footer__hours { font-size: 0.82rem; line-height: 1.9; color: rgba(255,255,255,0.44); margin-top: 1rem; }
+        .footer__hours strong { color: var(--kiwi); font-weight: 600; }
+        .footer__bottom { display: flex; justify-content: space-between; align-items: center; }
+        .footer__bottom p, .footer__bottom a { font-size: 0.78rem; color: rgba(255,255,255,0.28); }
+        .footer__bottom a { transition: color 0.3s; }
+        .footer__bottom a:hover { color: var(--kiwi); }
+        .footer__bottom-links { display: flex; gap: 1.5rem; }
+
+        /* ════════════════════════════════════════════
+           SCROLL REVEAL
+        ════════════════════════════════════════════ */
+        .reveal, .reveal-l, .reveal-r {
+            opacity: 0;
+            transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out);
+        }
+        .reveal   { transform: translateY(42px); }
+        .reveal-l { transform: translateX(-42px); }
+        .reveal-r { transform: translateX(42px); }
+        .reveal.in, .reveal-l.in, .reveal-r.in { opacity: 1; transform: none; }
+
+        /* ════════════════════════════════════════════
+           RESPONSIVE
+        ════════════════════════════════════════════ */
+        @media (max-width: 1200px) {
+            .nav { padding: 0 3rem; }
+            .page-header, .comptoir, .carte, .footer { padding-left: 3rem; padding-right: 3rem; }
+            .producteurs__text { padding: 4rem 3rem; }
+        }
+
+        @media (max-width: 1024px) {
+            .comptoir { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 3rem; }
+            .producteurs { grid-template-columns: 1fr; }
+            .producteurs__visual { min-height: 380px; }
+            .prod-badge { right: 2rem; }
+            .producteurs__text { padding: 4rem 3rem; }
+            .regions { grid-template-columns: repeat(2, 1fr); }
+            .footer__top { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav { padding: 0 1.5rem; }
+            .nav__menu { display: none; }
+            .nav__burger { display: flex; }
+            .page-header { padding: 8rem 1.5rem 4rem; }
+            .comptoir, .carte, .footer { padding: 4rem 1.5rem; }
+            .producteurs__text { padding: 3rem 1.5rem; }
+            .regions { grid-template-columns: 1fr 1fr; }
+            .footer__top { grid-template-columns: 1fr; gap: 2rem; }
+            .footer__bottom { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════════ -->
+<nav class="nav">
+    <div class="nav__inner">
+        <a href="index.html" class="nav__logo">
+            <span class="nav__logo-name">Le Fruitier</span>
+            <span class="nav__logo-sub">Légumes · Fruits · Produits Régionaux</span>
+        </a>
+
+        <ul class="nav__menu">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#produits">Nos Produits</a></li>
+            <li><a href="index.html#cadeaux">Cadeaux</a></li>
+            <li><a href="index.html#pros">Professionnels</a></li>
+            <li><a href="index.html#blog">Blog</a></li>
+            <li><a href="a-propos.html" class="active">À Propos</a></li>
+            <li><a href="index.html#contact" class="nav__cta">Contactez-nous</a></li>
+        </ul>
+
+        <button class="nav__burger" id="burger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer" id="drawer">
+    <button class="drawer__close" id="drawerClose">✕</button>
+    <ul class="drawer__menu">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="index.html#produits">Nos Produits</a></li>
+        <li><a href="index.html#cadeaux">Cadeaux</a></li>
+        <li><a href="index.html#pros">Professionnels</a></li>
+        <li><a href="index.html#blog">Blog</a></li>
+        <li><a href="a-propos.html">À Propos</a></li>
+        <li><a href="index.html#contact">Contactez-nous</a></li>
+    </ul>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     PAGE HEADER
+═══════════════════════════════════════════════ -->
+<header class="page-header">
+    <div class="page-header__bread">
+        <a href="index.html">Accueil</a>
+        <span>›</span>
+        À Propos
+    </div>
+    <h1>À Propos<br>du Fruitier</h1>
+    <p class="page-header__sub">Notre histoire, nos engagements et les hommes et femmes qui cultivent les produits que vous trouvez chaque jour dans notre boutique.</p>
+</header>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 1 – LE COMPTOIR
+═══════════════════════════════════════════════ -->
+<section class="comptoir">
+    <div class="comptoir__img reveal-l">
+        <img src="image/premierheader.png" alt="Devanture du Fruitier à La Destrousse">
+    </div>
+    <div class="comptoir__text reveal-r">
+        <span class="label">Notre Boutique</span>
+        <h1>LE <span class="accent">COMPTOIR</span> DE SAVEURS LOCALES ET D'ÉPICERIE FINE.</h1>
+        <p>Du repas de tous les jours aux instants d'exception, Le Fruitier vous accompagne au quotidien. Notre premier engagement&nbsp;? Vous offrir des fruits et légumes frais, savoureux et accessibles pour régaler toute la famille midi et soir.</p>
+        <p>Mais parce que la gourmandise n'a pas de limite, notre boutique abrite aussi un coin épicerie fine et terroir unique à La Destrousse. Huiles d'olive d'exception, confiseries artisanales, tartinables et vins de vignerons…</p>
+        <p>Ici, vos produits du marché côtoient des trésors à offrir ou à s'offrir. Pour une invitation à dîner, un anniversaire ou les fêtes, repartez avec un morceau de Provence&nbsp;!</p>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 2 – ZOOM PRODUCTEURS
+═══════════════════════════════════════════════ -->
+<section class="producteurs">
+
+    <div class="producteurs__visual reveal-l">
+        <img src="image/bac a legume.png" alt="Bac de légumes frais — Rémi Laurent">
+        <div class="prod-badge">
+            <div class="prod-badge__name">Rémi Laurent</div>
+            <div class="prod-badge__role">Maraîcher · La Destrousse</div>
+        </div>
+    </div>
+
+    <div class="producteurs__text reveal-r">
+        <span class="label">Nos Agriculteurs</span>
+        <h2 class="display">ZOOM SUR NOS AGRICULTEURS PARTENAIRES</h2>
+        <p class="farmer-name">RÉMI LAURENT – MARAÎCHER FRAISES ET TOMATES</p>
+        <p class="lead">Rémy est très éthique dans sa façon de cultiver les tomates. Il privilégie des pratiques durables et veille à ce que chaque étape de son processus agricole respecte l'environnement.</p>
+        <p class="lead">De la sélection de graines non-OGM à l'utilisation d'engrais naturels, il s'engage à maintenir la santé du sol et de l'écosystème environnant.</p>
+        <ul class="values">
+            <li>Graines 100% non-OGM</li>
+            <li>Engrais naturels &amp; compost</li>
+            <li>Agriculture raisonnée locale</li>
+            <li>Circuit court · zéro kilomètre</li>
+        </ul>
+        <a href="#" class="btn btn--dark">
+            DÉCOUVREZ NOS AGRICULTEURS
+            <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 3 – CARTE DES PRODUITS
+═══════════════════════════════════════════════ -->
+<section class="carte">
+    <span class="label reveal">Traçabilité</span>
+    <h2 class="display reveal">LA CARTE DE NOS PRODUITS</h2>
+    <p class="lead reveal">Découvrez l'origine de chaque produit chez Le Fruitier. Nous valorisons le circuit court et les producteurs de la région Provence-Alpes-Côte d'Azur.</p>
+
+    <div class="carte__map reveal">
+        <img src="image/carteprovenance.png" alt="Carte de provenance des produits – Provence PACA">
+    </div>
+
+    <div class="regions">
+        <div class="region-card reveal">
+            <div class="region-card__ico">🍅</div>
+            <div class="region-card__name">Bouches-du-Rhône</div>
+            <div class="region-card__prod">Tomates · Courgettes · Aubergines</div>
+        </div>
+        <div class="region-card reveal">
+            <div class="region-card__ico">🍇</div>
+            <div class="region-card__name">Var</div>
+            <div class="region-card__prod">Vins de Provence · Figues</div>
+        </div>
+        <div class="region-card reveal">
+            <div class="region-card__ico">🫒</div>
+            <div class="region-card__name">Alpes-de-Haute-Provence</div>
+            <div class="region-card__prod">Huile d'olive · Lavande · Miel</div>
+        </div>
+        <div class="region-card reveal">
+            <div class="region-card__ico">🍑</div>
+            <div class="region-card__name">Vaucluse</div>
+            <div class="region-card__prod">Melons · Fraises · Cerises</div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<footer class="footer" id="contact">
+    <div class="footer__top">
+
+        <div class="footer__brand">
+            <div class="footer__brand-name">Le Fruitier</div>
+            <span class="footer__brand-sub">Légumes · Fruits · Produits Régionaux</span>
+            <p>Votre primeur de confiance à La Destrousse. Fraîcheur, terroir et gourmandise au cœur de la Provence.</p>
+            <div class="footer__socials">
+                <a href="#" class="social" aria-label="Facebook">f</a>
+                <a href="#" class="social" aria-label="Instagram">ig</a>
+                <a href="#" class="social" aria-label="TikTok">tt</a>
+            </div>
+        </div>
+
+        <div class="footer__col">
+            <h4>Navigation</h4>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="index.html#produits">Nos Produits</a></li>
+                <li><a href="index.html#cadeaux">Cadeaux &amp; Paniers</a></li>
+                <li><a href="index.html#pros">Professionnels</a></li>
+                <li><a href="index.html#blog">Blog</a></li>
+                <li><a href="a-propos.html">À Propos</a></li>
+            </ul>
+        </div>
+
+        <div class="footer__col">
+            <h4>Nos Univers</h4>
+            <ul>
+                <li><a href="index.html#produits">Fruits &amp; Légumes</a></li>
+                <li><a href="index.html#produits">Épicerie Fine</a></li>
+                <li><a href="index.html#produits">Cave à Vins</a></li>
+                <li><a href="index.html#produits">Confiserie</a></li>
+                <li><a href="index.html#cadeaux">Paniers Garnis</a></li>
+                <li><a href="index.html#produits">Produits Régionaux</a></li>
+            </ul>
+        </div>
+
+        <div class="footer__col">
+            <h4>Nous Trouver</h4>
+            <div class="footer__address">
+                [ Adresse à compléter ]<br>
+                La Destrousse<br>
+                13112 · Bouches-du-Rhône
+            </div>
+            <div class="footer__hours">
+                <strong>Lundi – Samedi</strong><br>
+                [ Horaires à compléter ]<br><br>
+                <strong>Dimanche</strong><br>
+                [ Horaires à compléter ]
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer__bottom">
+        <p>© 2025 Le Fruitier · La Destrousse · Tous droits réservés</p>
+        <div class="footer__bottom-links">
+            <a href="#">Mentions légales</a>
+            <a href="#">Confidentialité</a>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+    /* ─── MOBILE DRAWER ─────────────────────────── */
+    const drawer = document.getElementById('drawer');
+    document.getElementById('burger').addEventListener('click',      () => drawer.classList.add('is-open'));
+    document.getElementById('drawerClose').addEventListener('click', () => drawer.classList.remove('is-open'));
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => drawer.classList.remove('is-open')));
+
+    /* ─── SCROLL REVEAL ─────────────────────────── */
+    const revealEls = document.querySelectorAll('.reveal, .reveal-l, .reveal-r');
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('in'), i * 80);
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
