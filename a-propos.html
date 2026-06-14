@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ─── VARIABLES ─────────────────────────────── */
         :root {
             --olive:      #8B8F47;
             --green:      #616D29;
@@ -24,239 +23,78 @@
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Nunito', sans-serif;
-            background: var(--cream);
-            color: var(--brown);
-            overflow-x: hidden;
-        }
-
-        img { display: block; max-width: 100%; }
-        a   { text-decoration: none; color: inherit; }
+        body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--brown); overflow-x: hidden; }
+        img  { display: block; max-width: 100%; }
+        a    { text-decoration: none; color: inherit; }
 
         /* ─── LABEL ─────────────────────────────────── */
         .label {
             display: inline-block;
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.28em;
-            text-transform: uppercase;
+            font-size: 0.65rem; font-weight: 700;
+            letter-spacing: 0.28em; text-transform: uppercase;
             padding: 0.45rem 1rem;
-            background: var(--sage);
-            color: var(--green);
+            background: var(--sage); color: var(--green);
             margin-bottom: 1.4rem;
         }
+        .label--kiwi { background: rgba(153,193,34,0.15); color: var(--green); }
 
-        /* ─── DISPLAY H2 ────────────────────────────── */
         h2.display {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(2rem, 3.5vw, 3.4rem);
-            font-weight: 600;
-            line-height: 1.1;
-            color: var(--brown);
+            font-weight: 600; line-height: 1.1; color: var(--brown);
         }
-
-        .lead {
-            font-size: 1rem;
-            line-height: 1.88;
-            color: var(--text-muted);
-        }
+        .lead { font-size: 1rem; line-height: 1.88; color: var(--text-muted); }
 
         /* ─── BOUTONS ───────────────────────────────── */
         .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            padding: 1rem 2.2rem;
-            transition: background 0.28s, color 0.28s;
-            cursor: pointer;
-            border: none;
+            display: inline-flex; align-items: center; gap: 0.7rem;
+            font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em;
+            text-transform: uppercase; padding: 1rem 2.2rem;
+            transition: background 0.28s, color 0.28s; cursor: pointer; border: none;
         }
         .btn svg { flex-shrink: 0; transition: transform 0.28s; }
         .btn:hover svg { transform: translateX(4px); }
         .btn--dark  { background: var(--brown); color: var(--white); }
-        .btn--dark:hover  { background: var(--green); }
-        .btn--ghost {
-            background: transparent;
-            border: 1.5px solid var(--brown);
-            color: var(--brown);
-        }
-        .btn--ghost:hover { background: var(--brown); color: var(--white); }
-
-        .arr {
-            width: 15px; height: 15px;
-            fill: none; stroke: currentColor;
-            stroke-width: 2;
-            stroke-linecap: round; stroke-linejoin: round;
-        }
+        .btn--dark:hover { background: var(--green); }
+        .btn--kiwi  { background: var(--kiwi); color: var(--brown); }
+        .btn--kiwi:hover { background: var(--white); }
+        .arr { width:15px; height:15px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
 
         /* ════════════════════════════════════════════
-           NAVIGATION (toujours en mode scrollé ici)
+           NAV (toujours scrollée sur cette page)
         ════════════════════════════════════════════ */
         .nav {
-            position: fixed;
-            inset: 0 0 auto 0;
-            z-index: 900;
-            padding: 0 5rem;
+            position: fixed; inset: 0 0 auto 0; z-index: 900; padding: 0 5rem;
             background: rgba(245,245,239,0.97);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
             box-shadow: 0 2px 28px rgba(95,56,23,0.07);
         }
         .nav__inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1.4rem 0;
-            border-bottom: 1px solid var(--sage);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1.4rem 0; border-bottom: 1px solid var(--sage);
         }
         .nav__logo { display: flex; flex-direction: column; }
-        .nav__logo-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.55rem;
-            font-weight: 700;
-            color: var(--brown);
-            letter-spacing: 0.04em;
-            line-height: 1;
-        }
-        .nav__logo-sub {
-            font-size: 0.52rem;
-            font-weight: 600;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: var(--olive);
-        }
-        .nav__menu {
-            display: flex;
-            list-style: none;
-            align-items: center;
-            gap: 2.2rem;
-        }
-        .nav__menu a {
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--brown);
-            transition: color 0.3s;
-            position: relative;
-        }
-        .nav__menu a:not(.nav__cta)::after {
-            content: '';
-            position: absolute;
-            bottom: -4px; left: 0;
-            width: 0; height: 1.5px;
-            background: var(--kiwi);
-            transition: width 0.3s var(--ease-out);
-        }
-        .nav__menu a:not(.nav__cta):hover::after { width: 100%; }
-        .nav__menu a.active { color: var(--green); }
-        .nav__menu a.active::after { width: 100%; }
+        .nav__logo-name { font-family:'Cormorant Garamond',serif; font-size:1.55rem; font-weight:700; color:var(--brown); letter-spacing:0.04em; line-height:1; }
+        .nav__logo-sub  { font-size:0.52rem; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:var(--olive); }
+        .nav__menu { display:flex; list-style:none; align-items:center; gap:2.2rem; }
+        .nav__menu a { font-size:0.72rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--brown); transition:color 0.3s; position:relative; }
+        .nav__menu a:not(.nav__cta)::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1.5px; background:var(--kiwi); transition:width 0.3s var(--ease-out); }
+        .nav__menu a:not(.nav__cta):hover::after { width:100%; }
+        .nav__menu a.active { color:var(--green); }
+        .nav__menu a.active::after { width:100%; }
+        .nav__cta { background:var(--kiwi)!important; color:var(--brown)!important; padding:0.55rem 1.3rem; }
+        .nav__cta:hover { background:var(--brown)!important; color:var(--white)!important; }
+        .nav__burger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
+        .nav__burger span { display:block; width:24px; height:2px; background:var(--brown); }
 
-        .nav__cta {
-            background: var(--kiwi) !important;
-            color: var(--brown) !important;
-            padding: 0.55rem 1.3rem;
-        }
-        .nav__cta:hover { background: var(--brown) !important; color: var(--white) !important; }
-
-        .nav__burger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 4px;
-        }
-        .nav__burger span { display: block; width: 24px; height: 2px; background: var(--brown); }
-
-        /* ─── MOBILE DRAWER ─────────────────────────── */
-        .drawer {
-            position: fixed;
-            inset: 0;
-            background: var(--brown);
-            z-index: 950;
-            display: flex;
-            flex-direction: column;
-            padding: 5rem 2.5rem 3rem;
-            transform: translateX(100%);
-            transition: transform 0.42s var(--ease-out);
-        }
-        .drawer.is-open { transform: none; }
-        .drawer__close {
-            position: absolute;
-            top: 1.5rem; right: 1.5rem;
-            background: none; border: none;
-            color: white; font-size: 1.6rem;
-            cursor: pointer; line-height: 1;
-        }
-        .drawer__menu { list-style: none; }
-        .drawer__menu li { border-bottom: 1px solid rgba(255,255,255,0.08); }
-        .drawer__menu a {
-            display: block;
-            padding: 1.1rem 0;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem; font-weight: 600;
-            color: var(--white);
-            transition: color 0.3s;
-        }
-        .drawer__menu a:hover { color: var(--kiwi); }
-
-        /* ════════════════════════════════════════════
-           PAGE HEADER
-        ════════════════════════════════════════════ */
-        .page-header {
-            background: var(--green);
-            padding: 10rem 7rem 5rem;
-            position: relative;
-            overflow: hidden;
-        }
-        .page-header::after {
-            content: '';
-            position: absolute;
-            right: -100px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 500px; height: 500px;
-            border-radius: 50%;
-            border: 1px solid rgba(153,193,34,0.2);
-            pointer-events: none;
-        }
-        .page-header__bread {
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.5);
-            margin-bottom: 1.2rem;
-        }
-        .page-header__bread a {
-            color: rgba(255,255,255,0.5);
-            transition: color 0.3s;
-        }
-        .page-header__bread a:hover { color: var(--kiwi); }
-        .page-header__bread span { margin: 0 0.6rem; }
-        .page-header h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3rem, 6vw, 5.5rem);
-            font-weight: 600;
-            color: var(--white);
-            line-height: 1.05;
-            max-width: 700px;
-        }
-        .page-header__sub {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.65);
-            margin-top: 1.4rem;
-            max-width: 480px;
-            line-height: 1.7;
-        }
+        /* ─── DRAWER ─────────────────────────────── */
+        .drawer { position:fixed; inset:0; background:var(--brown); z-index:950; display:flex; flex-direction:column; padding:5rem 2.5rem 3rem; transform:translateX(100%); transition:transform 0.42s var(--ease-out); }
+        .drawer.is-open { transform:none; }
+        .drawer__close { position:absolute; top:1.5rem; right:1.5rem; background:none; border:none; color:white; font-size:1.6rem; cursor:pointer; line-height:1; }
+        .drawer__menu { list-style:none; }
+        .drawer__menu li { border-bottom:1px solid rgba(255,255,255,0.08); }
+        .drawer__menu a { display:block; padding:1.1rem 0; font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:600; color:var(--white); transition:color 0.3s; }
+        .drawer__menu a:hover { color:var(--kiwi); }
 
         /* ════════════════════════════════════════════
            SECTION – LE COMPTOIR
@@ -264,92 +102,140 @@
         .comptoir {
             display: grid;
             grid-template-columns: 1fr 1.1fr;
-            gap: 6rem;
-            align-items: center;
-            padding: 8rem 7rem;
+            gap: 6rem; align-items: center;
+            padding: 9rem 7rem 8rem;
             background: var(--white);
         }
-        .comptoir__img img {
-            width: 100%;
-            border-radius: 28px;
-            box-shadow: 0 24px 60px rgba(95,56,23,0.14);
-        }
-        .comptoir__text .label {
-            background: rgba(153,193,34,0.15);
-            color: var(--green);
-        }
+        .comptoir__img img { width:100%; border-radius:28px; box-shadow:0 24px 60px rgba(95,56,23,0.14); }
+        .comptoir__text .label { background:rgba(153,193,34,0.15); color:var(--green); }
         .comptoir__text h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 3vw, 3.1rem);
-            font-weight: 700;
-            line-height: 1.15;
-            color: var(--brown);
-            margin-bottom: 2rem;
+            font-family:'Cormorant Garamond',serif;
+            font-size:clamp(2rem,3vw,3.1rem); font-weight:700;
+            line-height:1.15; color:var(--brown); margin-bottom:2rem;
         }
-        .comptoir__text h1 .accent { color: var(--kiwi); }
-        .comptoir__text p {
-            font-size: 1rem;
-            line-height: 1.9;
-            color: var(--text-muted);
-            margin-bottom: 1.2rem;
+        .comptoir__text h1 .accent { color:var(--kiwi); }
+        .comptoir__text p { font-size:1rem; line-height:1.9; color:var(--text-muted); margin-bottom:1.2rem; }
+
+        /* ════════════════════════════════════════════
+           MINI-CAROUSEL BOUTIQUE
+        ════════════════════════════════════════════ */
+        .apc {
+            position: relative;
+            background: var(--brown);
+            overflow: hidden;
         }
-        .comptoir__text p:last-of-type { margin-bottom: 0; }
+        .apc__track-wrap { overflow: hidden; }
+        .apc__track {
+            display: flex;
+            transition: transform 0.6s var(--ease-out);
+        }
+        .apc__slide {
+            flex: 0 0 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 520px;
+        }
+        .apc__slide-img {
+            position: relative;
+            overflow: hidden;
+        }
+        .apc__slide-img img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s var(--ease-out);
+        }
+        .apc__slide:hover .apc__slide-img img { transform: scale(1.04); }
+
+        .apc__slide-text {
+            display: flex; flex-direction: column;
+            justify-content: center;
+            padding: 4rem 5rem;
+            background: var(--brown);
+            position: relative;
+        }
+        .apc__slide-text::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -60px;
+            width: 120px; height: 100%;
+            background: var(--brown);
+            clip-path: polygon(60px 0, 100% 0, 100% 100%, 0 100%);
+        }
+        .apc__slide-num {
+            font-family:'Cormorant Garamond',serif;
+            font-size:4rem; font-weight:700;
+            color:rgba(255,255,255,0.06);
+            line-height:1; margin-bottom:1.5rem;
+            position: relative;
+        }
+        .apc__slide-tag {
+            font-size:0.6rem; font-weight:700;
+            letter-spacing:0.28em; text-transform:uppercase;
+            color:var(--kiwi); margin-bottom:1rem;
+            position: relative;
+        }
+        .apc__slide-title {
+            font-family:'Cormorant Garamond',serif;
+            font-size:clamp(1.6rem,2.5vw,2.4rem); font-weight:600;
+            color:var(--white); line-height:1.2;
+            margin-bottom:1.4rem; position:relative;
+        }
+        .apc__slide-desc {
+            font-size:0.95rem; line-height:1.78;
+            color:rgba(255,255,255,0.62);
+            margin-bottom:2.2rem; position:relative;
+        }
+
+        /* Dots */
+        .apc__dots {
+            position: absolute;
+            bottom: 2rem; left: 50%;
+            transform: translateX(-50%);
+            display: flex; gap: 0.6rem;
+            z-index: 10;
+        }
+        .apc__dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            border: none; cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .apc__dot.is-active { background: var(--kiwi); transform: scale(1.3); }
+
+        /* Arrows */
+        .apc__arrow {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            z-index: 10; width:46px; height:46px;
+            display:flex; align-items:center; justify-content:center;
+            background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2);
+            color:white; cursor:pointer;
+            transition:background 0.3s, border-color 0.3s, color 0.3s;
+        }
+        .apc__arrow:hover { background:var(--kiwi); border-color:var(--kiwi); color:var(--brown); }
+        .apc__arrow--prev { left:1.5rem; }
+        .apc__arrow--next { right:1.5rem; }
 
         /* ════════════════════════════════════════════
            SECTION – PRODUCTEURS
         ════════════════════════════════════════════ */
         .producteurs {
             background: var(--sage);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            min-height: 680px;
+            display: grid; grid-template-columns: 1fr 1fr;
+            align-items: center; min-height: 680px;
         }
-        .producteurs__visual {
-            position: relative;
-            height: 100%;
-            min-height: 600px;
-            overflow: hidden;
-        }
-        .producteurs__visual img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s var(--ease-out);
-        }
-        .producteurs__visual:hover img { transform: scale(1.04); }
-
-        .prod-badge {
-            position: absolute;
-            bottom: 2.5rem; right: -1px;
-            background: var(--brown);
-            color: var(--white);
-            padding: 1.4rem 1.8rem;
-            max-width: 230px;
-        }
-        .prod-badge__name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.35rem; font-weight: 700;
-            line-height: 1.1; margin-bottom: 0.3rem;
-        }
-        .prod-badge__role {
-            font-size: 0.58rem; font-weight: 700;
-            letter-spacing: 0.18em; text-transform: uppercase;
-            color: var(--kiwi);
-        }
-        .producteurs__text {
-            padding: 5rem 5rem 5rem 6rem;
-        }
-        .producteurs__text h2 { margin-bottom: 0.6rem; }
-        .farmer-name {
-            font-size: 0.72rem; font-weight: 700;
-            letter-spacing: 0.16em; text-transform: uppercase;
-            color: var(--green); margin-bottom: 2rem;
-        }
-        .producteurs__text p { margin-bottom: 1.3rem; }
-
-        .values { list-style: none; margin: 2rem 0 2.8rem; display: flex; flex-direction: column; gap: 0.85rem; }
-        .values li { display: flex; align-items: center; gap: 0.9rem; font-size: 0.92rem; font-weight: 600; color: var(--brown); }
-        .values li::before { content: ''; width: 7px; height: 7px; background: var(--kiwi); flex-shrink: 0; }
+        .producteurs__visual { position:relative; height:100%; min-height:600px; overflow:hidden; }
+        .producteurs__visual img { width:100%; height:100%; object-fit:cover; transition:transform 0.8s var(--ease-out); }
+        .producteurs__visual:hover img { transform:scale(1.04); }
+        .prod-badge { position:absolute; bottom:2.5rem; right:-1px; background:var(--brown); color:var(--white); padding:1.4rem 1.8rem; max-width:230px; }
+        .prod-badge__name { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:700; line-height:1.1; margin-bottom:0.3rem; }
+        .prod-badge__role { font-size:0.58rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--kiwi); }
+        .producteurs__text { padding:5rem 5rem 5rem 6rem; }
+        .producteurs__text h2 { margin-bottom:0.6rem; }
+        .farmer-name { font-size:0.72rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--green); margin-bottom:2rem; }
+        .producteurs__text p { margin-bottom:1.3rem; }
+        .values { list-style:none; margin:2rem 0 2.8rem; display:flex; flex-direction:column; gap:0.85rem; }
+        .values li { display:flex; align-items:center; gap:0.9rem; font-size:0.92rem; font-weight:600; color:var(--brown); }
+        .values li::before { content:''; width:7px; height:7px; background:var(--kiwi); flex-shrink:0; }
 
         /* ════════════════════════════════════════════
            SECTION – CARTE
@@ -357,150 +243,124 @@
         .carte {
             background: var(--cream);
             padding: 8rem 7rem;
-            text-align: center;
         }
-        .carte h2 { margin-bottom: 1rem; }
-        .carte .lead { max-width: 520px; margin: 0 auto 4rem; }
+        .carte__intro { text-align:center; margin-bottom:5rem; }
+        .carte__intro h2 { margin-bottom:1rem; }
+        .carte__intro .lead { max-width:520px; margin:0 auto; }
 
-        .carte__map {
-            width: 100%;
-            max-width: 760px;
-            margin: 0 auto 5rem;
-        }
-        .carte__map img { width: 100%; height: auto; display: block; }
-
-        .regions {
+        /* Côte à côte : légende gauche, carte droite */
+        .carte__body {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
+            grid-template-columns: 280px 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+        .regions {
+            display: flex; flex-direction: column;
+            gap: 1rem;
         }
         .region-card {
             background: var(--sage);
-            padding: 2rem 1.5rem;
-            text-align: center;
+            padding: 1.4rem 1.5rem;
+            display: flex; align-items: center; gap: 1rem;
             transition: background 0.34s, transform 0.34s;
+            cursor: default;
         }
-        .region-card:hover { background: var(--green); transform: translateY(-4px); }
-        .region-card__ico { font-size: 2.2rem; margin-bottom: 0.9rem; }
+        .region-card:hover { background: var(--green); transform: translateX(6px); }
+        .region-card__ico { font-size: 1.8rem; flex-shrink: 0; }
+        .region-card__info {}
         .region-card__name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem; font-weight: 600;
-            color: var(--brown); margin-bottom: 0.3rem;
-            transition: color 0.34s;
+            font-family:'Cormorant Garamond',serif;
+            font-size:1rem; font-weight:600; color:var(--brown);
+            margin-bottom:0.2rem; transition:color 0.34s;
         }
-        .region-card__prod { font-size: 0.72rem; color: var(--text-muted); transition: color 0.34s; }
+        .region-card__prod { font-size:0.7rem; color:var(--text-muted); transition:color 0.34s; line-height:1.4; }
         .region-card:hover .region-card__name,
-        .region-card:hover .region-card__prod { color: var(--white); }
+        .region-card:hover .region-card__prod { color:var(--white); }
+
+        .carte__map img { width:100%; height:auto; display:block; }
 
         /* ════════════════════════════════════════════
            FOOTER
         ════════════════════════════════════════════ */
-        .footer {
-            background: var(--brown);
-            padding: 6rem 7rem 3rem;
-        }
-        .footer__top {
-            display: grid;
-            grid-template-columns: 1.6fr 1fr 1fr 1fr;
-            gap: 4rem;
-            padding-bottom: 4rem;
-            margin-bottom: 3rem;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-        .footer__brand-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem; font-weight: 700; color: var(--white); line-height: 1;
-        }
-        .footer__brand-sub {
-            font-size: 0.55rem; letter-spacing: 0.24em; text-transform: uppercase;
-            color: var(--kiwi); display: block; margin-top: 0.3rem; margin-bottom: 1.5rem;
-        }
-        .footer__brand p { font-size: 0.88rem; line-height: 1.8; color: rgba(255,255,255,0.48); margin-bottom: 2rem; }
-        .footer__socials { display: flex; gap: 0.7rem; }
-        .social {
-            width: 38px; height: 38px;
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.55);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 0.8rem; font-weight: 700;
-            transition: background 0.3s, color 0.3s, border-color 0.3s;
-        }
-        .social:hover { background: var(--kiwi); color: var(--brown); border-color: var(--kiwi); }
-        .footer__col h4 {
-            font-size: 0.65rem; font-weight: 700;
-            letter-spacing: 0.22em; text-transform: uppercase;
-            color: var(--white); margin-bottom: 1.4rem;
-        }
-        .footer__col ul { list-style: none; }
-        .footer__col ul li { margin-bottom: 0.75rem; }
-        .footer__col ul li a { font-size: 0.88rem; color: rgba(255,255,255,0.46); transition: color 0.3s; }
-        .footer__col ul li a:hover { color: var(--kiwi); }
-        .footer__address { font-size: 0.88rem; line-height: 1.85; color: rgba(255,255,255,0.46); }
-        .footer__hours { font-size: 0.82rem; line-height: 1.9; color: rgba(255,255,255,0.44); margin-top: 1rem; }
-        .footer__hours strong { color: var(--kiwi); font-weight: 600; }
-        .footer__bottom { display: flex; justify-content: space-between; align-items: center; }
-        .footer__bottom p, .footer__bottom a { font-size: 0.78rem; color: rgba(255,255,255,0.28); }
-        .footer__bottom a { transition: color 0.3s; }
-        .footer__bottom a:hover { color: var(--kiwi); }
-        .footer__bottom-links { display: flex; gap: 1.5rem; }
+        .footer { background:var(--brown); padding:6rem 7rem 3rem; }
+        .footer__top { display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:4rem; padding-bottom:4rem; margin-bottom:3rem; border-bottom:1px solid rgba(255,255,255,0.08); }
+        .footer__brand-name { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:700; color:var(--white); line-height:1; }
+        .footer__brand-sub { font-size:0.55rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--kiwi); display:block; margin-top:0.3rem; margin-bottom:1.5rem; }
+        .footer__brand p { font-size:0.88rem; line-height:1.8; color:rgba(255,255,255,0.48); margin-bottom:2rem; }
+        .footer__socials { display:flex; gap:0.7rem; }
+        .social { width:38px; height:38px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.55); display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; transition:background 0.3s,color 0.3s,border-color 0.3s; }
+        .social:hover { background:var(--kiwi); color:var(--brown); border-color:var(--kiwi); }
+        .footer__col h4 { font-size:0.65rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--white); margin-bottom:1.4rem; }
+        .footer__col ul { list-style:none; }
+        .footer__col ul li { margin-bottom:0.75rem; }
+        .footer__col ul li a { font-size:0.88rem; color:rgba(255,255,255,0.46); transition:color 0.3s; }
+        .footer__col ul li a:hover { color:var(--kiwi); }
+        .footer__address { font-size:0.88rem; line-height:1.85; color:rgba(255,255,255,0.46); }
+        .footer__hours { font-size:0.82rem; line-height:1.9; color:rgba(255,255,255,0.44); margin-top:1rem; }
+        .footer__hours strong { color:var(--kiwi); font-weight:600; }
+        .footer__bottom { display:flex; justify-content:space-between; align-items:center; }
+        .footer__bottom p, .footer__bottom a { font-size:0.78rem; color:rgba(255,255,255,0.28); }
+        .footer__bottom a { transition:color 0.3s; }
+        .footer__bottom a:hover { color:var(--kiwi); }
+        .footer__bottom-links { display:flex; gap:1.5rem; }
 
         /* ════════════════════════════════════════════
            SCROLL REVEAL
         ════════════════════════════════════════════ */
-        .reveal, .reveal-l, .reveal-r {
-            opacity: 0;
-            transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out);
-        }
-        .reveal   { transform: translateY(42px); }
-        .reveal-l { transform: translateX(-42px); }
-        .reveal-r { transform: translateX(42px); }
-        .reveal.in, .reveal-l.in, .reveal-r.in { opacity: 1; transform: none; }
+        .reveal,.reveal-l,.reveal-r { opacity:0; transition:opacity 0.85s var(--ease-out),transform 0.85s var(--ease-out); }
+        .reveal   { transform:translateY(42px); }
+        .reveal-l { transform:translateX(-42px); }
+        .reveal-r { transform:translateX(42px); }
+        .reveal.in,.reveal-l.in,.reveal-r.in { opacity:1; transform:none; }
 
         /* ════════════════════════════════════════════
            RESPONSIVE
         ════════════════════════════════════════════ */
-        @media (max-width: 1200px) {
-            .nav { padding: 0 3rem; }
-            .page-header, .comptoir, .carte, .footer { padding-left: 3rem; padding-right: 3rem; }
-            .producteurs__text { padding: 4rem 3rem; }
+        @media (max-width:1200px) {
+            .nav { padding:0 3rem; }
+            .comptoir,.carte,.footer { padding-left:3rem; padding-right:3rem; }
+            .producteurs__text { padding:4rem 3rem; }
+            .apc__slide-text { padding:3rem 3.5rem; }
+            .carte__body { grid-template-columns:220px 1fr; gap:3rem; }
         }
-
-        @media (max-width: 1024px) {
-            .comptoir { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 3rem; }
-            .producteurs { grid-template-columns: 1fr; }
-            .producteurs__visual { min-height: 380px; }
-            .prod-badge { right: 2rem; }
-            .producteurs__text { padding: 4rem 3rem; }
-            .regions { grid-template-columns: repeat(2, 1fr); }
-            .footer__top { grid-template-columns: 1fr 1fr; }
+        @media (max-width:1024px) {
+            .comptoir { grid-template-columns:1fr; gap:3rem; padding:5rem 3rem; }
+            .producteurs { grid-template-columns:1fr; }
+            .producteurs__visual { min-height:380px; }
+            .prod-badge { right:2rem; }
+            .apc__slide { grid-template-columns:1fr; min-height:auto; }
+            .apc__slide-img { height:300px; }
+            .apc__slide-text::before { display:none; }
+            .apc__slide-text { padding:2.5rem 2.5rem; }
+            .apc__slide-num { display:none; }
+            .carte__body { grid-template-columns:1fr; }
+            .regions { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+            .footer__top { grid-template-columns:1fr 1fr; }
         }
-
-        @media (max-width: 768px) {
-            .nav { padding: 0 1.5rem; }
-            .nav__menu { display: none; }
-            .nav__burger { display: flex; }
-            .page-header { padding: 8rem 1.5rem 4rem; }
-            .comptoir, .carte, .footer { padding: 4rem 1.5rem; }
-            .producteurs__text { padding: 3rem 1.5rem; }
-            .regions { grid-template-columns: 1fr 1fr; }
-            .footer__top { grid-template-columns: 1fr; gap: 2rem; }
-            .footer__bottom { flex-direction: column; gap: 1rem; text-align: center; }
+        @media (max-width:768px) {
+            .nav { padding:0 1.5rem; }
+            .nav__menu { display:none; }
+            .nav__burger { display:flex; }
+            .comptoir,.carte,.footer { padding:4rem 1.5rem; }
+            .producteurs__text { padding:3rem 1.5rem; }
+            .apc__slide-text { padding:2rem 1.5rem; }
+            .apc__arrow { display:none; }
+            .regions { grid-template-columns:1fr; }
+            .footer__top { grid-template-columns:1fr; gap:2rem; }
+            .footer__bottom { flex-direction:column; gap:1rem; text-align:center; }
         }
     </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════
-     NAVIGATION
-═══════════════════════════════════════════════ -->
+<!-- NAV -->
 <nav class="nav">
     <div class="nav__inner">
         <a href="index.html" class="nav__logo">
             <span class="nav__logo-name">Le Fruitier</span>
             <span class="nav__logo-sub">Légumes · Fruits · Produits Régionaux</span>
         </a>
-
         <ul class="nav__menu">
             <li><a href="index.html">Accueil</a></li>
             <li><a href="index.html#produits">Nos Produits</a></li>
@@ -510,14 +370,13 @@
             <li><a href="a-propos.html" class="active">À Propos</a></li>
             <li><a href="index.html#contact" class="nav__cta">Contactez-nous</a></li>
         </ul>
-
         <button class="nav__burger" id="burger" aria-label="Menu">
             <span></span><span></span><span></span>
         </button>
     </div>
 </nav>
 
-<!-- MOBILE DRAWER -->
+<!-- DRAWER MOBILE -->
 <div class="drawer" id="drawer">
     <button class="drawer__close" id="drawerClose">✕</button>
     <ul class="drawer__menu">
@@ -530,20 +389,6 @@
         <li><a href="index.html#contact">Contactez-nous</a></li>
     </ul>
 </div>
-
-
-<!-- ═══════════════════════════════════════════════
-     PAGE HEADER
-═══════════════════════════════════════════════ -->
-<header class="page-header">
-    <div class="page-header__bread">
-        <a href="index.html">Accueil</a>
-        <span>›</span>
-        À Propos
-    </div>
-    <h1>À Propos<br>du Fruitier</h1>
-    <p class="page-header__sub">Notre histoire, nos engagements et les hommes et femmes qui cultivent les produits que vous trouvez chaque jour dans notre boutique.</p>
-</header>
 
 
 <!-- ═══════════════════════════════════════════════
@@ -564,10 +409,85 @@
 
 
 <!-- ═══════════════════════════════════════════════
-     SECTION 2 – ZOOM PRODUCTEURS
+     SECTION 2 – MINI-CAROUSEL BOUTIQUE
 ═══════════════════════════════════════════════ -->
-<section class="producteurs">
+<section class="apc">
+    <div class="apc__track-wrap">
+        <div class="apc__track" id="apcTrack">
 
+            <!-- Slide 1 -->
+            <div class="apc__slide">
+                <div class="apc__slide-img">
+                    <img src="image/vueinterieurmagasin.png" alt="Vue intérieure de la boutique">
+                </div>
+                <div class="apc__slide-text">
+                    <div class="apc__slide-num">01</div>
+                    <div class="apc__slide-tag">Notre Espace</div>
+                    <h2 class="apc__slide-title">Une boutique pensée pour vous</h2>
+                    <p class="apc__slide-desc">Chez Le Fruitier, chaque rayon est soigneusement sélectionné pour vous offrir le meilleur de la Provence. Un espace chaleureux où fraîcheur et gourmandise se côtoient.</p>
+                    <a href="#" class="btn btn--kiwi">
+                        EN SAVOIR +
+                        <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="apc__slide">
+                <div class="apc__slide-img">
+                    <img src="image/rayon avec plein de chose.png" alt="Nos rayons garnis">
+                </div>
+                <div class="apc__slide-text">
+                    <div class="apc__slide-num">02</div>
+                    <div class="apc__slide-tag">Notre Sélection</div>
+                    <h2 class="apc__slide-title">Des produits choisis avec soin</h2>
+                    <p class="apc__slide-desc">De l'huile d'olive aux confiseries artisanales, nos rayons débordent de trésors locaux. Chaque produit est sélectionné pour sa qualité, son authenticité et son ancrage dans notre terroir.</p>
+                    <a href="index.html#produits" class="btn btn--kiwi">
+                        DÉCOUVRIR
+                        <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="apc__slide">
+                <div class="apc__slide-img">
+                    <img src="image/gros plan sur legume.png" alt="Légumes frais du jour">
+                </div>
+                <div class="apc__slide-text">
+                    <div class="apc__slide-num">03</div>
+                    <div class="apc__slide-tag">Notre Engagement</div>
+                    <h2 class="apc__slide-title">La fraîcheur, chaque jour</h2>
+                    <p class="apc__slide-desc">Nos fruits et légumes arrivent directement de chez nos maraîchers partenaires. Fraîcheur garantie, saveurs préservées — parce que le goût de la Provence mérite d'être respecté.</p>
+                    <a href="a-propos.html#producteurs" class="btn btn--kiwi">
+                        NOS PRODUCTEURS
+                        <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <button class="apc__arrow apc__arrow--prev" id="apcPrev" aria-label="Précédent">
+        <svg class="arr" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </button>
+    <button class="apc__arrow apc__arrow--next" id="apcNext" aria-label="Suivant">
+        <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+
+    <div class="apc__dots">
+        <button class="apc__dot is-active" data-slide="0"></button>
+        <button class="apc__dot" data-slide="1"></button>
+        <button class="apc__dot" data-slide="2"></button>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 3 – ZOOM PRODUCTEURS
+═══════════════════════════════════════════════ -->
+<section class="producteurs" id="producteurs">
     <div class="producteurs__visual reveal-l">
         <img src="image/bac a legume.png" alt="Bac de légumes frais — Rémi Laurent">
         <div class="prod-badge">
@@ -575,7 +495,6 @@
             <div class="prod-badge__role">Maraîcher · La Destrousse</div>
         </div>
     </div>
-
     <div class="producteurs__text reveal-r">
         <span class="label">Nos Agriculteurs</span>
         <h2 class="display">ZOOM SUR NOS AGRICULTEURS PARTENAIRES</h2>
@@ -593,42 +512,55 @@
             <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
     </div>
-
 </section>
 
 
 <!-- ═══════════════════════════════════════════════
-     SECTION 3 – CARTE DES PRODUITS
+     SECTION 4 – CARTE DES PRODUITS
 ═══════════════════════════════════════════════ -->
 <section class="carte">
-    <span class="label reveal">Traçabilité</span>
-    <h2 class="display reveal">LA CARTE DE NOS PRODUITS</h2>
-    <p class="lead reveal">Découvrez l'origine de chaque produit chez Le Fruitier. Nous valorisons le circuit court et les producteurs de la région Provence-Alpes-Côte d'Azur.</p>
-
-    <div class="carte__map reveal">
-        <img src="image/carteprovenance.png" alt="Carte de provenance des produits – Provence PACA">
+    <div class="carte__intro reveal">
+        <span class="label">Traçabilité</span>
+        <h2 class="display">LA CARTE DE NOS PRODUITS</h2>
+        <p class="lead">Découvrez l'origine de chaque produit chez Le Fruitier. Nous valorisons le circuit court et les producteurs de la région Provence-Alpes-Côte d'Azur.</p>
     </div>
 
-    <div class="regions">
-        <div class="region-card reveal">
-            <div class="region-card__ico">🍅</div>
-            <div class="region-card__name">Bouches-du-Rhône</div>
-            <div class="region-card__prod">Tomates · Courgettes · Aubergines</div>
+    <div class="carte__body reveal">
+        <!-- Légende à gauche -->
+        <div class="regions">
+            <div class="region-card">
+                <div class="region-card__ico">🍅</div>
+                <div class="region-card__info">
+                    <div class="region-card__name">Bouches-du-Rhône</div>
+                    <div class="region-card__prod">Tomates · Courgettes · Aubergines</div>
+                </div>
+            </div>
+            <div class="region-card">
+                <div class="region-card__ico">🍇</div>
+                <div class="region-card__info">
+                    <div class="region-card__name">Var</div>
+                    <div class="region-card__prod">Vins de Provence · Figues</div>
+                </div>
+            </div>
+            <div class="region-card">
+                <div class="region-card__ico">🫒</div>
+                <div class="region-card__info">
+                    <div class="region-card__name">Alpes-de-Haute-Provence</div>
+                    <div class="region-card__prod">Huile d'olive · Lavande · Miel</div>
+                </div>
+            </div>
+            <div class="region-card">
+                <div class="region-card__ico">🍑</div>
+                <div class="region-card__info">
+                    <div class="region-card__name">Vaucluse</div>
+                    <div class="region-card__prod">Melons · Fraises · Cerises</div>
+                </div>
+            </div>
         </div>
-        <div class="region-card reveal">
-            <div class="region-card__ico">🍇</div>
-            <div class="region-card__name">Var</div>
-            <div class="region-card__prod">Vins de Provence · Figues</div>
-        </div>
-        <div class="region-card reveal">
-            <div class="region-card__ico">🫒</div>
-            <div class="region-card__name">Alpes-de-Haute-Provence</div>
-            <div class="region-card__prod">Huile d'olive · Lavande · Miel</div>
-        </div>
-        <div class="region-card reveal">
-            <div class="region-card__ico">🍑</div>
-            <div class="region-card__name">Vaucluse</div>
-            <div class="region-card__prod">Melons · Fraises · Cerises</div>
+
+        <!-- Carte à droite -->
+        <div class="carte__map">
+            <img src="image/carteprovenance.png" alt="Carte de provenance des produits – Provence PACA">
         </div>
     </div>
 </section>
@@ -639,7 +571,6 @@
 ═══════════════════════════════════════════════ -->
 <footer class="footer" id="contact">
     <div class="footer__top">
-
         <div class="footer__brand">
             <div class="footer__brand-name">Le Fruitier</div>
             <span class="footer__brand-sub">Légumes · Fruits · Produits Régionaux</span>
@@ -650,7 +581,6 @@
                 <a href="#" class="social" aria-label="TikTok">tt</a>
             </div>
         </div>
-
         <div class="footer__col">
             <h4>Navigation</h4>
             <ul>
@@ -662,7 +592,6 @@
                 <li><a href="a-propos.html">À Propos</a></li>
             </ul>
         </div>
-
         <div class="footer__col">
             <h4>Nos Univers</h4>
             <ul>
@@ -674,7 +603,6 @@
                 <li><a href="index.html#produits">Produits Régionaux</a></li>
             </ul>
         </div>
-
         <div class="footer__col">
             <h4>Nous Trouver</h4>
             <div class="footer__address">
@@ -689,9 +617,7 @@
                 [ Horaires à compléter ]
             </div>
         </div>
-
     </div>
-
     <div class="footer__bottom">
         <p>© 2025 Le Fruitier · La Destrousse · Tous droits réservés</p>
         <div class="footer__bottom-links">
@@ -703,23 +629,54 @@
 
 
 <script>
-    /* ─── MOBILE DRAWER ─────────────────────────── */
+    /* ─── DRAWER ────────────────────────────────── */
     const drawer = document.getElementById('drawer');
     document.getElementById('burger').addEventListener('click',      () => drawer.classList.add('is-open'));
     document.getElementById('drawerClose').addEventListener('click', () => drawer.classList.remove('is-open'));
     drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => drawer.classList.remove('is-open')));
 
+    /* ─── MINI CAROUSEL ─────────────────────────── */
+    const track  = document.getElementById('apcTrack');
+    const dots   = document.querySelectorAll('.apc__dot');
+    const TOTAL  = 3;
+    let apcCur   = 0;
+    let apcTimer;
+
+    function apcGo(n) {
+        apcCur = (n + TOTAL) % TOTAL;
+        track.style.transform = `translateX(-${apcCur * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle('is-active', i === apcCur));
+    }
+
+    function apcNext() { apcGo(apcCur + 1); resetApc(); }
+    function apcPrev() { apcGo(apcCur - 1); resetApc(); }
+    function resetApc() { clearInterval(apcTimer); apcTimer = setInterval(apcNext, 5000); }
+
+    apcTimer = setInterval(apcNext, 5000);
+
+    document.getElementById('apcNext').addEventListener('click', apcNext);
+    document.getElementById('apcPrev').addEventListener('click', apcPrev);
+    dots.forEach(d => d.addEventListener('click', () => { apcGo(+d.dataset.slide); resetApc(); }));
+
+    /* Swipe tactile */
+    let sx = 0;
+    track.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive:true });
+    track.addEventListener('touchend',   e => {
+        const d = sx - e.changedTouches[0].clientX;
+        if (Math.abs(d) > 44) d > 0 ? apcNext() : apcPrev();
+    }, { passive:true });
+
     /* ─── SCROLL REVEAL ─────────────────────────── */
-    const revealEls = document.querySelectorAll('.reveal, .reveal-l, .reveal-r');
+    const revEls = document.querySelectorAll('.reveal,.reveal-l,.reveal-r');
     const obs = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => entry.target.classList.add('in'), i * 80);
-                obs.unobserve(entry.target);
+        entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+                setTimeout(() => e.target.classList.add('in'), i * 80);
+                obs.unobserve(e.target);
             }
         });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(el => obs.observe(el));
+    }, { threshold:0.08, rootMargin:'0px 0px -40px 0px' });
+    revEls.forEach(el => obs.observe(el));
 </script>
 
 </body>
