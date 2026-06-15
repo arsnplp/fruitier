@@ -67,8 +67,8 @@
 
         /* SPLIT */
         .split{display:grid;grid-template-columns:1fr 1fr;min-height:600px;}
-        .split__img{overflow:hidden;}
-        .split__img img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease-out);}
+        .split__img{overflow:hidden;position:relative;}
+        .split__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease-out);}
         .split:hover .split__img img{transform:scale(1.04);}
         .split__text{display:flex;flex-direction:column;justify-content:center;padding:5rem 6rem;}
         .split__text--cream{background:var(--cream);}
@@ -219,24 +219,6 @@
             <p class="lead reveal">Notre sélection de produits régionaux est un hommage à cette terre généreuse : miels de garrigue, tapenades artisanales, herbes de Provence récoltées à la main, fromages de chèvre des collines, huiles d'olive des mas voisins et bien d'autres spécialités qui racontent l'histoire de la Provence.</p>
             <p class="lead reveal reveal-delay">Chaque produit que nous proposons a été sélectionné pour son authenticité, sa qualité et son ancrage dans les traditions locales. Consommer régional, c'est soutenir nos producteurs et préserver un patrimoine gustatif unique.</p>
             <a href="a-propos.html" class="btn btn--dark reveal">DÉCOUVRIR NOS PARTENAIRES <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-    </div>
-
-    <div class="region__grid">
-        <div class="region__card">
-            <div class="region__card-icon">🫒</div>
-            <h3>Huiles d'Olive</h3>
-            <p class="region__card-p">Des oliviers centenaires aux moulins artisanaux, nos huiles d'olive de Provence révèlent des arômes d'une complexité rare. Fruité vert, amande, artichaut — chaque domaine a sa signature.</p>
-        </div>
-        <div class="region__card">
-            <div class="region__card-icon">🍯</div>
-            <h3>Miels de Garrigue</h3>
-            <p class="region__card-p">Les abeilles des collines provençales butinent thym, romarin et lavande pour produire des miels d'une intensité incomparable. Cristallisés ou liquides, ils sont le parfum de la garrigue en pot.</p>
-        </div>
-        <div class="region__card">
-            <div class="region__card-icon">🌿</div>
-            <h3>Herbes &amp; Épices</h3>
-            <p class="region__card-p">Herbes de Provence récoltées à la main, fleur de sel de Camargue, poivres rares… Nos épices et aromates sélectionnés auprès des meilleurs producteurs de la région subliment chaque plat.</p>
         </div>
     </div>
 </section>
