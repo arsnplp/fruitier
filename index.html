@@ -1045,6 +1045,15 @@
         .paniers-oval-wrap {
             background: var(--sage);
             padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .paniers-oval-wrap::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('image/deuxiemeheader.png') center/cover no-repeat;
+            opacity: 0.22;
         }
         .paniers-oval {
             max-width: 1150px;
@@ -1056,6 +1065,8 @@
             align-items: center;
             gap: 4rem;
             min-height: 460px;
+            position: relative;
+            z-index: 1;
         }
         .paniers-oval__img {
             flex: 0 0 38%;
