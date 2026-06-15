@@ -371,14 +371,13 @@
     }
 
     function computeTargets() {
-        const nh = document.getElementById('nav').offsetHeight;
-        TARGETS = SECTIONS.map(s => Math.max(0, s.offsetTop - nh));
+        TARGETS = SECTIONS.map(s => s.offsetTop);
     }
 
     function getCurrentIndex() {
-        const pos = window.scrollY;
+        const pos = window.scrollY + 5;
         let idx = 0;
-        TARGETS.forEach((t, i) => { if (t <= pos + 5) idx = i; });
+        TARGETS.forEach((t, i) => { if (t <= pos) idx = i; });
         return idx;
     }
 
