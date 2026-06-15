@@ -362,25 +362,23 @@
     const isMobile = () => window.innerWidth <= 1024;
 
     const SECTIONS = Array.from(document.querySelectorAll('[data-snap]'));
-    const DURATION = 1050;
+    const DURATION = 1100;
     let locked = false;
+    let TARGETS = [];
 
-    function easeInOutQuart(t) {
-        return t < 0.5 ? 8*t*t*t*t : 1 - Math.pow(-2*t+2, 4)/2;
+    function easeInOutCubic(t) {
+        return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
     }
 
-    function navH() {
-        return document.getElementById('nav').getBoundingClientRect().height;
-    }
-
-    function snapTargetOf(section) {
-        return Math.max(0, section.getBoundingClientRect().top + window.scrollY - navH());
+    function computeTargets() {
+        const nh = document.getElementById('nav').offsetHeight;
+        TARGETS = SECTIONS.map(s => Math.max(0, s.offsetTop - nh));
     }
 
     function getCurrentIndex() {
-        const mid = window.scrollY + navH() + 10;
+        const pos = window.scrollY;
         let idx = 0;
-        SECTIONS.forEach((s, i) => { if (snapTargetOf(s) <= mid) idx = i; });
+        TARGETS.forEach((t, i) => { if (t <= pos + 5) idx = i; });
         return idx;
     }
 
@@ -388,13 +386,13 @@
         if (idx < 0 || idx >= SECTIONS.length || locked) return;
         locked = true;
         const start = window.scrollY;
-        const end   = snapTargetOf(SECTIONS[idx]);
+        const end   = TARGETS[idx];
         const dist  = end - start;
         const t0    = performance.now();
 
         (function step(now) {
             const p = Math.min((now - t0) / DURATION, 1);
-            window.scrollTo(0, start + dist * easeInOutQuart(p));
+            window.scrollTo(0, start + dist * easeInOutCubic(p));
             if (p < 1) {
                 requestAnimationFrame(step);
             } else {
@@ -403,6 +401,10 @@
             }
         })(performance.now());
     }
+
+    window.addEventListener('load',   computeTargets);
+    window.addEventListener('resize', computeTargets);
+    computeTargets();
 
     /* wheel */
     window.addEventListener('wheel', e => {
