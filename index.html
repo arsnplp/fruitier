@@ -1099,12 +1099,35 @@
             justify-content: center;
             text-decoration: none;
             color: inherit;
-            transition: opacity .3s;
-            border-top: 3px solid transparent;
+            transition: transform .5s var(--ease-out);
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
         }
-        .local-cta__col:hover { opacity: .88; }
-        .local-cta__col--cream { background: var(--cream); border-top-color: var(--kiwi); }
-        .local-cta__col--sage  { background: var(--sage);  border-top-color: var(--brown); }
+        .local-cta__col::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            transition: opacity .5s var(--ease-out);
+        }
+        .local-cta__col--cream::before {
+            background: linear-gradient(135deg,
+                rgba(245,245,239,0.91) 0%,
+                rgba(245,245,239,0.76) 60%,
+                rgba(153,193,34,0.18) 100%
+            );
+        }
+        .local-cta__col--sage::before {
+            background: linear-gradient(135deg,
+                rgba(210,212,193,0.89) 0%,
+                rgba(210,212,193,0.72) 60%,
+                rgba(95,56,23,0.18) 100%
+            );
+        }
+        .local-cta__col:hover::before { opacity: .82; }
+        .local-cta__col > * { position: relative; z-index: 1; }
         .local-cta__col h2 { margin: .5rem 0 1.2rem; }
         .local-cta__col .lead { margin-bottom: 1.5rem; }
 
@@ -1518,13 +1541,13 @@
      SECTION LOCAL – PRODUITS LOCAUX & NOS PAYSANS
 ═══════════════════════════════════════════════ -->
 <div class="local-cta">
-    <a href="produits-regionaux.html" class="local-cta__col local-cta__col--cream reveal">
+    <a href="produits-regionaux.html" class="local-cta__col local-cta__col--cream reveal" style="background-image:url('image/bacdelegume.png');">
         <span class="label">Terroir Provençal</span>
         <h2 class="display">DÉCOUVREZ NOS<br>PRODUITS LOCAUX</h2>
         <p class="lead">Le meilleur de la Provence, sélectionné directement chez nos producteurs de la région : miels, huiles d'olive, tapenades et spécialités du terroir.</p>
         <span class="btn btn--dark" style="align-self:flex-start;">VOIR NOS PRODUITS RÉGIONAUX <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
     </a>
-    <a href="produits-regionaux.html#producteurs" class="local-cta__col local-cta__col--sage reveal">
+    <a href="produits-regionaux.html#producteurs" class="local-cta__col local-cta__col--sage reveal" style="background-image:url('image/photoPaysan.png');">
         <span class="label">Nos Partenaires</span>
         <h2 class="display">EN SAVOIR PLUS<br>SUR NOS PAYSANS</h2>
         <p class="lead">Portraits et engagements de nos agriculteurs partenaires, qui cultivent avec passion et dans le respect du terroir provençal.</p>
