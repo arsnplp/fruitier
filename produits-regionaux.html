@@ -96,20 +96,14 @@
         .carte__map img{width:100%;height:auto;display:block;}
 
         /* PRODUCTEURS */
-        .producteurs{background:var(--sage);display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:680px;}
-        .producteurs__visual{position:relative;height:100%;min-height:600px;overflow:hidden;}
-        .producteurs__visual img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease-out);}
-        .producteurs__visual:hover img{transform:scale(1.04);}
-        .prod-badge{position:absolute;bottom:2.5rem;right:-1px;background:var(--brown);color:var(--white);padding:1.4rem 1.8rem;max-width:230px;}
-        .prod-badge__name{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;line-height:1.1;margin-bottom:.3rem;}
-        .prod-badge__role{font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--kiwi);}
-        .producteurs__text{padding:5rem 5rem 5rem 6rem;}
+        .producteurs{background:var(--white);display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:5rem;}
+        .producteurs__visual{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.4rem;padding:2rem;}
+        .producteurs__visual img{width:100%;max-width:340px;border-radius:3px;box-shadow:0 8px 32px rgba(95,56,23,0.12);}
+        .producteurs__farmer-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--green);}
+        .producteurs__farmer-caption{font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--brown);}
+        .producteurs__text{padding:3rem 4rem;}
         .producteurs__text h2{margin-bottom:.6rem;}
-        .farmer-name{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:2rem;}
         .producteurs__text p{margin-bottom:1.3rem;}
-        .values{list-style:none;margin:2rem 0 2.8rem;display:flex;flex-direction:column;gap:.85rem;}
-        .values li{display:flex;align-items:center;gap:.9rem;font-size:.92rem;font-weight:600;color:var(--brown);}
-        .values li::before{content:'';width:7px;height:7px;background:var(--kiwi);flex-shrink:0;}
 
         /* REVEAL */
         .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out);}
@@ -153,8 +147,8 @@
             .carte{padding:5rem 2rem;}
             .carte__body{grid-template-columns:1fr;}
             .regions{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-            .producteurs{grid-template-columns:1fr;}
-            .producteurs__visual{min-height:380px;}
+            .producteurs{grid-template-columns:1fr;padding:3rem 1.5rem;}
+            .producteurs__visual{padding:1rem 0;}
             .prod-badge{right:2rem;}
             .footer__top{grid-template-columns:1fr 1fr;padding:3rem 2rem;gap:2rem;}
             .footer__bottom{padding:1.5rem 2rem;}
@@ -284,26 +278,18 @@
 <!-- ZOOM SUR NOS AGRICULTEURS PARTENAIRES -->
 <section class="producteurs" id="producteurs">
     <div class="producteurs__visual reveal-l">
-        <img src="image/photoPaysan.png" alt="Nos agriculteurs partenaires, Rémi Laurent">
-        <div class="prod-badge">
-            <div class="prod-badge__name">Rémi Laurent</div>
-            <div class="prod-badge__role">Maraîcher · La Destrousse</div>
-        </div>
+        <p class="producteurs__farmer-title">Rémi Laurent</p>
+        <img src="image/photopaysan2.png" alt="Rémi Laurent, maraîcher partenaire">
+        <p class="producteurs__farmer-caption">Notre maraîcher fraises et tomates</p>
     </div>
     <div class="producteurs__text reveal-r">
         <span class="label">Nos Agriculteurs</span>
-        <h2 class="display">ZOOM SUR NOS AGRICULTEURS PARTENAIRES</h2>
-        <p class="farmer-name">RÉMI LAURENT – MARAÎCHER FRAISES ET TOMATES</p>
+        <h2 class="display">ZOOM SUR NOS AGRICULTEURS<br><span style="color:var(--kiwi)">PARTENAIRES</span></h2>
         <p class="lead">Rémy est très éthique dans sa façon de cultiver les tomates. Il privilégie des pratiques durables et veille à ce que chaque étape de son processus agricole respecte l'environnement.</p>
-        <p class="lead">De la sélection de graines non-OGM à l'utilisation d'engrais naturels, il s'engage à maintenir la santé du sol et de l'écosystème environnant.</p>
-        <ul class="values">
-            <li>Graines 100% non-OGM</li>
-            <li>Engrais naturels &amp; compost</li>
-            <li>Agriculture raisonnée locale</li>
-            <li>Circuit court · zéro kilomètre</li>
-        </ul>
-        <a href="index.html#contact" class="btn btn--dark">
-            NOUS CONTACTER
+        <p class="lead">De la sélection de graines non-OGM à l'utilisation d'engrais naturels, Thomas s'engage à maintenir la santé du sol et de l'écosystème environnant.</p>
+        <p class="lead">Il prend également soin de minimiser l'utilisation de l'eau, en employant des systèmes d'irrigation goutte-à-goutte pour maximiser l'efficacité.</p>
+        <a href="index.html#contact" class="btn btn--kiwi">
+            DÉCOUVREZ NOS AGRICULTEURS
             <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
     </div>
