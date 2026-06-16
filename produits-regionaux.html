@@ -102,8 +102,10 @@
         .producteurs__farmer-title{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:600;font-style:italic;color:var(--green);}
         .producteurs__farmer-caption{font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--brown);}
         .producteurs__text{padding:2rem 3rem 2rem 4rem;}
-        .producteurs__text h2{font-size:clamp(3rem,4.5vw,5.5rem);line-height:1;margin-bottom:.5rem;}
+        .producteurs__text h2{font-size:clamp(2.4rem,4vw,5rem);line-height:1.05;margin-bottom:.5rem;}
         .producteurs__text p{margin-bottom:1.2rem;color:var(--brown);font-size:1rem;line-height:1.75;}
+        .producteurs--alt{background:var(--cream);grid-template-columns:7fr 5fr;}
+        .producteurs--alt .producteurs__text{padding:2rem 5rem 2rem 3rem;}
 
         /* REVEAL */
         .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out);}
@@ -149,6 +151,8 @@
             .regions{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
             .producteurs{grid-template-columns:1fr;padding:3rem 1.5rem;}
             .producteurs__visual{padding:1rem 0;}
+            .producteurs--alt .producteurs__visual{order:-1;}
+            .producteurs--alt .producteurs__text{padding:3rem 1.5rem;}
             .prod-badge{right:2rem;}
             .footer__top{grid-template-columns:1fr 1fr;padding:3rem 2rem;gap:2rem;}
             .footer__bottom{padding:1.5rem 2rem;}
@@ -275,19 +279,37 @@
 </section>
 
 
-<!-- ZOOM SUR NOS AGRICULTEURS PARTENAIRES -->
+<!-- AGRICULTEURS PARTENAIRES — Léon et Sarah -->
 <section class="producteurs" id="producteurs">
     <div class="producteurs__visual reveal-l">
-        <p class="producteurs__farmer-title">Rémi Laurent</p>
-        <img src="image/photoPaysan.png" alt="Rémi Laurent, maraîcher partenaire">
-        <p class="producteurs__farmer-caption">Notre maraîcher fraises et tomates</p>
+        <p class="producteurs__farmer-title">Léon &amp; Sarah</p>
+        <img src="image/photoPaysan.png" alt="Léon et Sarah, maraîchers partenaires">
+        <p class="producteurs__farmer-caption">Maraîchers depuis 5 générations</p>
     </div>
     <div class="producteurs__text reveal-r">
         <span class="label">Nos Agriculteurs</span>
-        <h2 class="display">ZOOM SUR NOS AGRICULTEURS<br><span style="color:var(--kiwi)">PARTENAIRES</span></h2>
+        <h2 class="display">RENCONTRE AVEC LÉON ET SARAH :<br><span style="color:var(--kiwi)">L'ÂME DE NOS TERRES</span></h2>
+        <p>Aujourd'hui, nous vous présentons Léon et Sarah, nos maraîchers passionnés. Travailler avec eux, c'est toucher à l'histoire vivante de notre région. Maraîchers depuis 5 générations, leur famille s'est installée à Aubagne à une époque charnière pour la Provence.</p>
+        <p>Dans les années 1830, Marseille subit une sécheresse historique de sept ans qui tarit ses puits et favorisa une épidémie meurtrière de choléra. Pour sauver la ville, le maire Maximin Consolat lança un projet colossal : amener l'eau de la Durance jusqu'à la cité phocéenne.</p>
+        <p>L'ingénieur Franz Mayor de Montricher réalisa alors un prodige technique : un canal de 80 km franchissant montagnes et vallées, incluant le monumental aqueduc de Roquefavour. L'eau arriva enfin en 1849, transformant Marseille en une ville saine et verdoyante, un triomphe aujourd'hui immortalisé par le somptueux Palais Longchamp.</p>
+        <p>C'est dans ce sillage que la famille de Léon et Sarah a pris racine. Et depuis cette époque, leur façon de cultiver n'a jamais changé. Ils perpétuent les gestes d'autrefois, dans le respect total de la terre et des saisons, pour vous garantir un goût d'une authenticité rare.</p>
+        <p style="color:var(--green);font-style:italic;font-size:.92rem;">🎥 Restez connectés... Très bientôt, nous vous dévoilerons un reportage exclusif pour vous faire découvrir leur quotidien et les coulisses de leur exploitation.</p>
+    </div>
+</section>
+
+<!-- AGRICULTEURS PARTENAIRES — Rémi Laurent -->
+<section class="producteurs producteurs--alt">
+    <div class="producteurs__text reveal-l">
+        <span class="label">Nos Agriculteurs</span>
+        <h2 class="display">RÉMI LAURENT,<br><span style="color:var(--kiwi)">NOTRE MARAÎCHER</span></h2>
         <p>Rémy est très éthique dans sa façon de cultiver les tomates. Il privilégie des pratiques durables et veille à ce que chaque étape de son processus agricole respecte l'environnement.</p>
         <p>De la sélection de graines non-OGM à l'utilisation d'engrais naturels, Thomas s'engage à maintenir la santé du sol et de l'écosystème environnant.</p>
         <p>Il prend également soin de minimiser l'utilisation de l'eau, en employant des systèmes d'irrigation goutte-à-goutte pour maximiser l'efficacité.</p>
+    </div>
+    <div class="producteurs__visual reveal-r">
+        <p class="producteurs__farmer-title">Rémi Laurent</p>
+        <img src="image/photopaysan2.png" alt="Rémi Laurent, maraîcher partenaire">
+        <p class="producteurs__farmer-caption">Notre maraîcher fraises et tomates</p>
     </div>
 </section>
 
