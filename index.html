@@ -27,7 +27,7 @@
 
         /* ─── RESET & BASE ──────────────────────────── */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; font-size: 16px; }
+        html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
 
         body {
             font-family: 'Nunito', sans-serif;
@@ -1121,6 +1121,8 @@
 
         @media (max-width: 1200px) {
             .nav { padding: 0 3rem; }
+            .nav__menu { gap: 1.2rem; }
+            .nav__menu a { font-size: 0.66rem; letter-spacing: 0.10em; }
             .promesse__text { padding: 5rem 3.5rem 5rem 3rem; }
             .hero__content { padding: 0 4rem; padding-top: 5rem; }
             .hero__dots { left: 4rem; }
@@ -1132,6 +1134,9 @@
         }
 
         @media (max-width: 1024px) {
+            .nav__menu   { display: none; }
+            .nav__burger { display: flex; }
+
             .promesse { grid-template-columns: 1fr; }
             .promesse__visual { min-height: 360px; }
             .promesse__badge { left: 2rem; }
@@ -1161,8 +1166,6 @@
             .local-cta { grid-template-columns: 1fr; }
             .local-cta__col { padding: 4rem 1.5rem; }
 
-            .nav__menu   { display: none; }
-            .nav__burger { display: flex; }
             .nav         { padding: 0 1.5rem; }
 
             .hero__content { padding: 0 1.5rem; padding-top: 5rem; }

@@ -23,7 +23,7 @@
         }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
         body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--brown); overflow-x: hidden; }
         img  { display: block; max-width: 100%; }
         a    { text-decoration: none; color: inherit; }
@@ -326,6 +326,9 @@
             .carte__body { grid-template-columns:220px 1fr; gap:3rem; }
         }
         @media (max-width:1024px) {
+            .nav { padding:0 2rem; }
+            .nav__menu { display:none; }
+            .nav__burger { display:flex; }
             .comptoir { grid-template-columns:1fr; gap:3rem; padding:5rem 3rem; }
             .producteurs { grid-template-columns:1fr; }
             .producteurs__visual { min-height:380px; }
@@ -338,8 +341,6 @@
         }
         @media (max-width:768px) {
             .nav { padding:0 1.5rem; }
-            .nav__menu { display:none; }
-            .nav__burger { display:flex; }
             .comptoir,.carte,.footer { padding:4rem 1.5rem; }
             .producteurs__text { padding:3rem 1.5rem; }
             .apc__slide { height:360px; }
