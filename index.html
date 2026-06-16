@@ -1085,6 +1085,29 @@
             margin-top: 0.4rem;
         }
 
+        /* ════════════════════════════════════════════
+           SECTION LOCAL CTA – 2 COLONNES
+        ════════════════════════════════════════════ */
+        .local-cta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .local-cta__col {
+            padding: 5rem 6rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-decoration: none;
+            color: inherit;
+            transition: opacity .3s;
+            border-top: 3px solid transparent;
+        }
+        .local-cta__col:hover { opacity: .88; }
+        .local-cta__col--cream { background: var(--cream); border-top-color: var(--kiwi); }
+        .local-cta__col--sage  { background: var(--sage);  border-top-color: var(--brown); }
+        .local-cta__col h2 { margin: .5rem 0 1.2rem; }
+        .local-cta__col .lead { margin-bottom: 1.5rem; }
+
         @media (max-width: 1200px) {
             .nav { padding: 0 3rem; }
             .promesse__text { padding: 5rem 3.5rem 5rem 3rem; }
@@ -1124,6 +1147,9 @@
         }
 
         @media (max-width: 768px) {
+            .local-cta { grid-template-columns: 1fr; }
+            .local-cta__col { padding: 4rem 1.5rem; }
+
             .nav__menu   { display: none; }
             .nav__burger { display: flex; }
             .nav         { padding: 0 1.5rem; }
@@ -1321,7 +1347,7 @@
         <div class="blog-carousel" id="blogCarousel">
 
             <article class="blog-card">
-                <img src="image/rayon avec plein de chose.png" alt="Fête des Mères" class="blog-card__img">
+                <img src="image/fetemere.png" alt="Fête des Mères" class="blog-card__img">
                 <div class="blog-card__body">
                     <p class="blog-card__tag">Événement · Mai 2025</p>
                     <h3 class="blog-card__title">ON FÊTE LES MÈRES CHEZ LE FRUITIER&nbsp;!</h3>
@@ -1398,7 +1424,7 @@
         </a>
 
         <a href="offrir.html#offrir" class="pcell">
-            <img src="image/rayon de miel.png" alt="Pour Offrir">
+            <img src="image/Panieraoffrire.png" alt="Pour Offrir">
             <div class="pcell__overlay">
                 <p class="pcell__tag">Cadeaux</p>
                 <h3 class="pcell__title">Pour Offrir</h3>
@@ -1416,7 +1442,7 @@
         </a>
 
         <a href="produits.html#epicerie" class="pcell">
-            <img src="image/planrayonpotdetamari.png" alt="Épicerie Fine">
+            <img src="image/rayon avec plein de chose.png" alt="Épicerie Fine">
             <div class="pcell__overlay">
                 <p class="pcell__tag">Terroir</p>
                 <h3 class="pcell__title">Épicerie Fine</h3>
@@ -1433,7 +1459,7 @@
             <div class="pcell__arrow"><svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </a>
 
-        <a href="offrir.html#regionaux" class="pcell">
+        <a href="produits-regionaux.html" class="pcell">
             <img src="image/bacdelegume.png" alt="Produits de notre Région">
             <div class="pcell__overlay">
                 <p class="pcell__tag">Local</p>
@@ -1452,7 +1478,7 @@
         </a>
 
         <a href="professionnels.html" class="pcell" id="pros">
-            <img src="image/rayon avec plein de chose.png" alt="Pour les Professionnels">
+            <img src="image/pourlespro.png" alt="Pour les Professionnels">
             <div class="pcell__overlay">
                 <p class="pcell__tag">B2B</p>
                 <h3 class="pcell__title">Pour les Professionnels</h3>
@@ -1488,7 +1514,23 @@
 </section>
 
 
-<!-- Section Carte déplacée vers a-propos.html -->
+<!-- ═══════════════════════════════════════════════
+     SECTION LOCAL – PRODUITS LOCAUX & NOS PAYSANS
+═══════════════════════════════════════════════ -->
+<div class="local-cta">
+    <a href="produits-regionaux.html" class="local-cta__col local-cta__col--cream reveal">
+        <span class="label">Terroir Provençal</span>
+        <h2 class="display">DÉCOUVREZ NOS<br>PRODUITS LOCAUX</h2>
+        <p class="lead">Le meilleur de la Provence, sélectionné directement chez nos producteurs de la région : miels, huiles d'olive, tapenades et spécialités du terroir.</p>
+        <span class="btn btn--dark" style="align-self:flex-start;">VOIR NOS PRODUITS RÉGIONAUX <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
+    <a href="produits-regionaux.html#producteurs" class="local-cta__col local-cta__col--sage reveal">
+        <span class="label">Nos Partenaires</span>
+        <h2 class="display">EN SAVOIR PLUS<br>SUR NOS PAYSANS</h2>
+        <p class="lead">Portraits et engagements de nos agriculteurs partenaires, qui cultivent avec passion et dans le respect du terroir provençal.</p>
+        <span class="btn btn--dark" style="align-self:flex-start;">RENCONTRER NOS PAYSANS <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </a>
+</div>
 
 
 <!-- ═══════════════════════════════════════════════
@@ -1500,7 +1542,7 @@
             <span class="label">Épicerie Fine</span>
             <h2 class="display">NOTRE SÉLECTION<br>D'EXCEPTION</h2>
         </div>
-        <a href="#produits" class="btn btn--ghost">Voir tous les produits</a>
+        <a href="produits.html" class="btn btn--ghost">Nos Produits</a>
     </div>
 
     <div class="galerie__strip">
@@ -1564,7 +1606,7 @@
                 <li><a href="produits.html#cave">Cave à Vins</a></li>
                 <li><a href="produits.html#confiserie">Confiserie</a></li>
                 <li><a href="offrir.html">Paniers &amp; Cadeaux</a></li>
-                <li><a href="offrir.html#regionaux">Produits Régionaux</a></li>
+                <li><a href="produits-regionaux.html">Produits Régionaux</a></li>
             </ul>
         </div>
 

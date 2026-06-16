@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espace Professionnels – Le Fruitier · La Destrousse</title>
-    <meta name="description" content="Le Fruitier propose des livraisons de produits frais aux restaurateurs et comités d'entreprise de Provence, ainsi que des paniers garnis de Noël.">
+    <title>Produits Régionaux &amp; Nos Paysans – Le Fruitier · La Destrousse</title>
+    <meta name="description" content="Le meilleur de la Provence : produits régionaux, carte de provenance et portrait de nos agriculteurs partenaires. Le Fruitier à La Destrousse.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
             --ease-out:cubic-bezier(0.22,1,0.36,1);
         }
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-        html{scroll-behavior:auto;font-size:16px;}
+        html{scroll-behavior:smooth;font-size:16px;}
         body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--brown);overflow-x:hidden;}
         img{display:block;max-width:100%;}
         a{text-decoration:none;color:inherit;}
@@ -36,8 +36,6 @@
         .btn--kiwi:hover{background:var(--brown);color:var(--white);}
         .btn--ghost{background:transparent;border:1.5px solid var(--brown);color:var(--brown);}
         .btn--ghost:hover{background:var(--brown);color:var(--white);}
-        .btn--ghost-white{background:transparent;border:1.5px solid rgba(255,255,255,.5);color:var(--white);}
-        .btn--ghost-white:hover{background:var(--white);color:var(--brown);}
 
         /* NAV */
         .nav{position:fixed;inset:0 0 auto 0;z-index:900;padding:0 5rem;background:rgba(245,245,239,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 2px 28px rgba(95,56,23,.07);}
@@ -62,29 +60,13 @@
         .drawer__menu li{margin-bottom:1.8rem;}
         .drawer__menu a{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--white);letter-spacing:.04em;}
 
-        /* HERO PRO */
-        .pro-hero{
-            padding:9rem 5rem 6rem;
-            background:var(--green);
-            position:relative;
-            overflow:hidden;
-            height:100vh;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-        }
-        .pro-hero::before{
-            content:'';position:absolute;inset:0;
-            background:url('image/vueinterieurmagasin.png') center/cover no-repeat;
-            opacity:.18;
-        }
-        .pro-hero__inner{position:relative;z-index:1;max-width:720px;}
-        .pro-hero .label{background:rgba(255,255,255,.12);color:var(--kiwi);}
-        .pro-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5vw,5rem);font-weight:600;color:var(--white);line-height:1.05;margin-bottom:1.5rem;}
-        .pro-hero p{font-size:1.05rem;line-height:1.88;color:rgba(255,255,255,.75);margin-bottom:2rem;}
+        /* PAGE BANNER */
+        .page-banner{padding:9rem 5rem 5rem;text-align:center;border-bottom:1px solid var(--sage);}
+        .page-banner h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:600;color:var(--brown);line-height:1;margin-bottom:1.2rem;}
+        .page-banner .lead{max-width:600px;margin:0 auto;color:var(--text-muted);}
 
         /* SPLIT */
-        .split{display:grid;grid-template-columns:1fr 1fr;height:100vh;}
+        .split{display:grid;grid-template-columns:1fr 1fr;min-height:600px;}
         .split__img{overflow:hidden;position:relative;}
         .split__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease-out);}
         .split:hover .split__img img{transform:scale(1.04);}
@@ -92,29 +74,52 @@
         .split__text--cream{background:var(--cream);}
         .split__text--white{background:var(--white);}
 
-        /* AVANTAGES LIST */
-        .avantages{display:flex;flex-direction:column;gap:.8rem;margin:1.5rem 0 2rem;}
-        .avantages li{display:flex;align-items:flex-start;gap:1rem;font-size:.92rem;color:var(--text-muted);line-height:1.6;}
-        .avantages li .check{display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--kiwi);flex-shrink:0;margin-top:2px;}
-        .avantages li .check svg{width:11px;height:11px;fill:none;stroke:var(--brown);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+        /* REGION SECTION */
+        .region__intro{background:var(--green);color:var(--white);padding:5rem;}
+        .region__intro h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,4rem);font-weight:600;line-height:1.1;margin-bottom:1.5rem;}
+        .region__intro p{font-size:1rem;line-height:1.88;color:rgba(255,255,255,.78);max-width:680px;}
 
-        /* NOEL SECTION */
-        .noel{background:var(--brown);padding:5rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;height:100vh;}
-        .noel__text .label{background:rgba(255,255,255,.12);color:var(--kiwi);}
-        .noel__text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,4rem);font-weight:600;color:var(--white);line-height:1.1;margin-bottom:1.5rem;}
-        .noel__text p{font-size:1rem;line-height:1.88;color:rgba(255,255,255,.7);margin-bottom:1rem;}
-        .noel__img{border-radius:4px;overflow:hidden;aspect-ratio:4/3;}
-        .noel__img img{width:100%;height:100%;object-fit:cover;}
-        .noel__items{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.5rem 0 2rem;}
-        .noel__item{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);font-size:.78rem;font-weight:600;letter-spacing:.08em;padding:.4rem 1rem;}
+        /* CARTE */
+        .carte{background:var(--cream);padding:8rem 7rem;}
+        .carte__intro{text-align:center;margin-bottom:5rem;}
+        .carte__intro h2{margin-bottom:1rem;}
+        .carte__intro .lead{max-width:520px;margin:0 auto;}
+        .carte__body{display:grid;grid-template-columns:280px minmax(0,580px);gap:5rem;align-items:start;justify-content:center;}
+        .regions{display:flex;flex-direction:column;gap:1rem;}
+        .region-card{background:var(--sage);padding:1.4rem 1.5rem;display:flex;align-items:center;gap:1rem;transition:background .34s,transform .34s;cursor:default;}
+        .region-card:hover{background:var(--green);transform:translateX(6px);}
+        .region-card__ico{font-size:1.8rem;flex-shrink:0;}
+        .region-card__name{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--brown);margin-bottom:.2rem;transition:color .34s;}
+        .region-card__prod{font-size:.7rem;color:var(--text-muted);transition:color .34s;line-height:1.4;}
+        .region-card:hover .region-card__name,.region-card:hover .region-card__prod{color:var(--white);}
+        .carte__map img{width:100%;height:auto;display:block;}
+
+        /* PRODUCTEURS */
+        .producteurs{background:var(--sage);display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:680px;}
+        .producteurs__visual{position:relative;height:100%;min-height:600px;overflow:hidden;}
+        .producteurs__visual img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease-out);}
+        .producteurs__visual:hover img{transform:scale(1.04);}
+        .prod-badge{position:absolute;bottom:2.5rem;right:-1px;background:var(--brown);color:var(--white);padding:1.4rem 1.8rem;max-width:230px;}
+        .prod-badge__name{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;line-height:1.1;margin-bottom:.3rem;}
+        .prod-badge__role{font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--kiwi);}
+        .producteurs__text{padding:5rem 5rem 5rem 6rem;}
+        .producteurs__text h2{margin-bottom:.6rem;}
+        .farmer-name{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:2rem;}
+        .producteurs__text p{margin-bottom:1.3rem;}
+        .values{list-style:none;margin:2rem 0 2.8rem;display:flex;flex-direction:column;gap:.85rem;}
+        .values li{display:flex;align-items:center;gap:.9rem;font-size:.92rem;font-weight:600;color:var(--brown);}
+        .values li::before{content:'';width:7px;height:7px;background:var(--kiwi);flex-shrink:0;}
 
         /* REVEAL */
         .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out);}
         .reveal.is-visible{opacity:1;transform:none;}
         .reveal-delay{transition-delay:.15s;}
+        .reveal-l{opacity:0;transform:translateX(-42px);transition:opacity .85s var(--ease-out),transform .85s var(--ease-out);}
+        .reveal-r{opacity:0;transform:translateX(42px);transition:opacity .85s var(--ease-out),transform .85s var(--ease-out);}
+        .reveal-l.is-visible,.reveal-r.is-visible{opacity:1;transform:none;}
 
         /* FOOTER */
-        .footer{background:var(--brown);color:rgba(255,255,255,.75);font-size:.9rem;line-height:1.7;border-top:1px solid rgba(255,255,255,.08);}
+        .footer{background:var(--brown);color:rgba(255,255,255,.75);font-size:.9rem;line-height:1.7;}
         .footer__top{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:3rem;padding:5rem;}
         .footer__brand-name{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--white);margin-bottom:.3rem;}
         .footer__brand-sub{font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--kiwi);margin-bottom:1.2rem;display:block;}
@@ -139,17 +144,24 @@
             .nav{padding:0 2rem;}
             .nav__menu{display:none;}
             .nav__burger{display:flex;}
-            .split{grid-template-columns:1fr;height:auto;}
+            .split{grid-template-columns:1fr;min-height:auto;}
             .split__img{height:360px;order:-1!important;}
             .split__text{padding:3.5rem 2.5rem;order:0!important;}
-            .pro-hero{height:auto;padding:7rem 2rem 4rem;}
-            .noel{grid-template-columns:1fr;padding:4rem 2rem;gap:3rem;height:auto;}
-            .noel__img{aspect-ratio:16/9;}
+            .page-banner{padding:7rem 2rem 3.5rem;}
+            .region__intro{padding:3.5rem 2rem;}
+            .carte{padding:5rem 2rem;}
+            .carte__body{grid-template-columns:1fr;}
+            .regions{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+            .producteurs{grid-template-columns:1fr;}
+            .producteurs__visual{min-height:380px;}
+            .prod-badge{right:2rem;}
             .footer__top{grid-template-columns:1fr 1fr;padding:3rem 2rem;gap:2rem;}
             .footer__bottom{padding:1.5rem 2rem;}
         }
         @media(max-width:768px){
             .split__text{padding:2.5rem 1.5rem;}
+            .regions{grid-template-columns:1fr;}
+            .producteurs__text{padding:3rem 1.5rem;}
             .footer__top{grid-template-columns:1fr;}
         }
     </style>
@@ -167,7 +179,7 @@
             <li><a href="index.html">Accueil</a></li>
             <li><a href="produits.html">Nos Produits</a></li>
             <li><a href="offrir.html">Pour Offrir</a></li>
-            <li><a href="professionnels.html" class="active">Professionnels</a></li>
+            <li><a href="professionnels.html">Professionnels</a></li>
             <li><a href="a-propos.html">À Propos</a></li>
             <li><a href="index.html#contact" class="nav__cta">Contactez-nous</a></li>
         </ul>
@@ -190,103 +202,114 @@
     </ul>
 </div>
 
-<!-- HERO PRO -->
-<div class="pro-hero" data-snap>
-    <div class="pro-hero__inner">
-        <span class="label">Espace Professionnels</span>
-        <h1>Nous travaillons<br>avec les pros</h1>
-        <p>Restaurateurs, comités d'entreprise, collectivités : Le Fruitier est votre partenaire de confiance pour des produits frais, de saison et directement issus des producteurs locaux de Provence.</p>
-        <a href="index.html#contact" class="btn btn--kiwi">PRENDRE CONTACT <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
+<!-- PAGE BANNER -->
+<div class="page-banner">
+    <span class="label">Terroir Provençal</span>
+    <h1>Produits Régionaux<br>&amp; Nos Paysans</h1>
+    <p class="lead">Le meilleur de la Provence directement chez vous : produits du terroir, traçabilité et portrait de nos agriculteurs partenaires.</p>
 </div>
 
-<!-- RESTAURATEURS -->
-<section class="split" id="restaurateurs" data-snap>
-    <div class="split__text split__text--cream">
-        <span class="label">Restaurateurs</span>
-        <h2 class="display reveal">VOUS ÊTES<br>RESTAURATEUR ?</h2>
-        <p class="lead reveal">Vous souhaitez proposer à vos clients des produits de saison, frais et locaux ? Le Fruitier est votre partenaire naturel. Chaque matin, nous sélectionnons auprès de nos producteurs partenaires les meilleurs fruits et légumes du moment.</p>
-        <ul class="avantages reveal">
-            <li>
-                <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
-                Livraison sur mesure selon vos besoins
-            </li>
-            <li>
-                <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
-                Disponibilités selon les arrivages et la saison
-            </li>
-            <li>
-                <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
-                Prix dégressifs selon les volumes
-            </li>
-            <li>
-                <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
-                Produits locaux, circuit court, fraîcheur garantie
-            </li>
-            <li>
-                <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
-                Accompagnement personnalisé de notre équipe
-            </li>
-        </ul>
-        <a href="index.html#contact" class="btn btn--dark reveal">NOUS CONTACTER <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
-    <div class="split__img">
-        <img src="image/pourlespro.png" alt="Rayon professionnel, produits frais en abondance">
-    </div>
-</section>
 
-<!-- COMITÉS D'ENTREPRISE -->
-<section class="split" id="comites" data-snap>
-    <div class="split__img">
-        <img src="image/gros plan sur legume.png" alt="Panier hebdomadaire de fruits et légumes frais">
+<!-- LE MEILLEUR DE LA PROVENCE + PRODUITS RÉGIONAUX -->
+<section id="regionaux">
+    <div class="region__intro">
+        <span class="label" style="background:rgba(255,255,255,.12);color:var(--kiwi);">Terroir Provençal</span>
+        <h2 class="reveal" style="color:var(--white);">LE MEILLEUR<br>DE LA PROVENCE</h2>
+        <p class="reveal">Ancrée au cœur de la Provence, La Destrousse bénéficie d'un terroir d'exception façonné par des siècles de traditions agricoles. Ici, le thym sauvage parfume les collines, les oliviers centenaires donnent des huiles d'une richesse incomparable, et les producteurs perpétuent des savoir-faire transmis de génération en génération.</p>
     </div>
-    <div class="split__text split__text--white">
-        <span class="label">Comités d'Entreprise</span>
-        <h2 class="display reveal">OFFREZ LA PROVENCE<br>À VOS SALARIÉS</h2>
-        <p class="lead reveal">Vous êtes comité d'entreprise ? Nous livrons chaque semaine des paniers de fruits et légumes de saison directement sur votre lieu de travail. Un panier différent chaque semaine, composé selon les arrivages et les saisons, pour apporter un peu de Provence à vos équipes.</p>
-        <p class="lead reveal reveal-delay">Une belle façon de prendre soin de vos salariés tout en soutenant l'agriculture locale et les producteurs de notre région. Frais, local, et arrangé avec soin chaque semaine.</p>
-        <ul class="avantages reveal">
-            <li>
-                <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
-                Paniers hebdomadaires de saison
-            </li>
-            <li>
-                <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
-                Livraison directe sur votre lieu de travail
-            </li>
-            <li>
-                <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
-                Contenu varié chaque semaine selon les arrivages
-            </li>
-        </ul>
-        <a href="index.html#contact" class="btn btn--dark reveal">DEMANDER UN DEVIS <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
-</section>
 
-<!-- PANIERS DE NOËL -->
-<section class="noel" id="noel" data-snap>
-    <div class="noel__text">
-        <span class="label">Fin d'Année</span>
-        <h2 class="reveal">PANIERS GARNIS<br>DE NOËL</h2>
-        <p class="reveal">Faites de Noël un moment gourmand et généreux. Le Fruitier compose des paniers de fin d'année d'exception, garnis des meilleurs produits régionaux soigneusement sélectionnés. Idéaux pour offrir à vos salariés, clients ou partenaires un cadeau authentique et savoureux.</p>
-        <div class="noel__items reveal">
-            <span class="noel__item">Confiseries Doucet</span>
-            <span class="noel__item">Vins de Provence</span>
-            <span class="noel__item">Huiles d'Olive</span>
-            <span class="noel__item">Miels &amp; Confitures</span>
-            <span class="noel__item">Chocolats Artisanaux</span>
-            <span class="noel__item">Épicerie Fine</span>
+    <div class="split">
+        <div class="split__img">
+            <img src="image/bacdelegume.png" alt="Produits régionaux de Provence">
         </div>
-        <p class="reveal reveal-delay" style="color:rgba(255,255,255,.6);font-size:.92rem;">Entièrement personnalisables selon vos envies et votre budget. Commandes à anticiper dès novembre.</p>
-        <a href="index.html#contact" class="btn btn--kiwi reveal">COMMANDER MES PANIERS <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
-    <div class="noel__img">
-        <img src="image/Faites plaisir et faites vous plaisir.png" alt="Paniers garnis de Noël, cadeaux gourmands">
+        <div class="split__text split__text--white">
+            <span class="label">Notre Région</span>
+            <h2 class="display reveal">PRODUITS<br>RÉGIONAUX</h2>
+            <p class="lead reveal">Notre sélection de produits régionaux est un hommage à cette terre généreuse : miels de garrigue, tapenades artisanales, herbes de Provence récoltées à la main, fromages de chèvre des collines, huiles d'olive des mas voisins et bien d'autres spécialités qui racontent l'histoire de la Provence.</p>
+            <p class="lead reveal reveal-delay">Chaque produit que nous proposons a été sélectionné pour son authenticité, sa qualité et son ancrage dans les traditions locales. Consommer régional, c'est soutenir nos producteurs et préserver un patrimoine gustatif unique.</p>
+            <a href="index.html#contact" class="btn btn--dark reveal">NOUS CONTACTER <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
     </div>
 </section>
+
+
+<!-- CARTE DES PRODUITS -->
+<section class="carte" id="carte">
+    <div class="carte__intro reveal">
+        <span class="label">Traçabilité</span>
+        <h2 class="display">LA CARTE DE NOS PRODUITS</h2>
+        <p class="lead">Découvrez l'origine de chaque produit chez Le Fruitier. Nous valorisons le circuit court et les producteurs de la région Provence-Alpes-Côte d'Azur.</p>
+    </div>
+
+    <div class="carte__body reveal">
+        <div class="regions">
+            <div class="region-card">
+                <div class="region-card__ico">🍅</div>
+                <div class="region-card__info">
+                    <div class="region-card__name">Bouches-du-Rhône</div>
+                    <div class="region-card__prod">Tomates · Courgettes · Aubergines</div>
+                </div>
+            </div>
+            <div class="region-card">
+                <div class="region-card__ico">🍇</div>
+                <div class="region-card__info">
+                    <div class="region-card__name">Var</div>
+                    <div class="region-card__prod">Vins de Provence · Figues</div>
+                </div>
+            </div>
+            <div class="region-card">
+                <div class="region-card__ico">🫒</div>
+                <div class="region-card__info">
+                    <div class="region-card__name">Alpes-de-Haute-Provence</div>
+                    <div class="region-card__prod">Huile d'olive · Lavande · Miel</div>
+                </div>
+            </div>
+            <div class="region-card">
+                <div class="region-card__ico">🍑</div>
+                <div class="region-card__info">
+                    <div class="region-card__name">Vaucluse</div>
+                    <div class="region-card__prod">Melons · Fraises · Cerises</div>
+                </div>
+            </div>
+        </div>
+        <div class="carte__map">
+            <img src="image/carteprovenance.png" alt="Carte de provenance des produits, Provence PACA">
+        </div>
+    </div>
+</section>
+
+
+<!-- ZOOM SUR NOS AGRICULTEURS PARTENAIRES -->
+<section class="producteurs" id="producteurs">
+    <div class="producteurs__visual reveal-l">
+        <img src="image/photoPaysan.png" alt="Nos agriculteurs partenaires, Rémi Laurent">
+        <div class="prod-badge">
+            <div class="prod-badge__name">Rémi Laurent</div>
+            <div class="prod-badge__role">Maraîcher · La Destrousse</div>
+        </div>
+    </div>
+    <div class="producteurs__text reveal-r">
+        <span class="label">Nos Agriculteurs</span>
+        <h2 class="display">ZOOM SUR NOS AGRICULTEURS PARTENAIRES</h2>
+        <p class="farmer-name">RÉMI LAURENT – MARAÎCHER FRAISES ET TOMATES</p>
+        <p class="lead">Rémy est très éthique dans sa façon de cultiver les tomates. Il privilégie des pratiques durables et veille à ce que chaque étape de son processus agricole respecte l'environnement.</p>
+        <p class="lead">De la sélection de graines non-OGM à l'utilisation d'engrais naturels, il s'engage à maintenir la santé du sol et de l'écosystème environnant.</p>
+        <ul class="values">
+            <li>Graines 100% non-OGM</li>
+            <li>Engrais naturels &amp; compost</li>
+            <li>Agriculture raisonnée locale</li>
+            <li>Circuit court · zéro kilomètre</li>
+        </ul>
+        <a href="index.html#contact" class="btn btn--dark">
+            NOUS CONTACTER
+            <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+</section>
+
 
 <!-- FOOTER -->
-<footer class="footer" data-snap>
+<footer class="footer">
     <div class="footer__top">
         <div class="footer__brand">
             <div class="footer__brand-name">Le Fruitier</div>
@@ -344,7 +367,6 @@
 </footer>
 
 <script>
-    /* ── DRAWER ─────────────────────────────── */
     const burger = document.getElementById('burgerBtn');
     const drawer = document.getElementById('drawer');
     const drawerClose = document.getElementById('drawerClose');
@@ -352,82 +374,15 @@
     drawerClose.addEventListener('click', () => drawer.classList.remove('is-open'));
     drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => drawer.classList.remove('is-open')));
 
-    /* ── REVEAL ─────────────────────────────── */
-    const revealObs = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); revealObs.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(r => revealObs.observe(r));
-
-    /* ── FULLPAGE SNAP (desktop only) ───────── */
-    const isMobile = () => window.innerWidth <= 1024;
-
-    const SECTIONS = Array.from(document.querySelectorAll('[data-snap]'));
-    const DURATION = 1100;
-    let locked = false;
-    let TARGETS = [];
-
-    function easeInOutCubic(t) {
-        return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
-    }
-
-    function computeTargets() {
-        TARGETS = SECTIONS.map(s => s.offsetTop);
-    }
-
-    function getCurrentIndex() {
-        const pos = window.scrollY + 5;
-        let idx = 0;
-        TARGETS.forEach((t, i) => { if (t <= pos) idx = i; });
-        return idx;
-    }
-
-    function goTo(idx) {
-        if (idx < 0 || idx >= SECTIONS.length || locked) return;
-        locked = true;
-        const start = window.scrollY;
-        const end   = TARGETS[idx];
-        const dist  = end - start;
-        const t0    = performance.now();
-
-        (function step(now) {
-            const p = Math.min((now - t0) / DURATION, 1);
-            window.scrollTo(0, start + dist * easeInOutCubic(p));
-            if (p < 1) {
-                requestAnimationFrame(step);
-            } else {
-                window.scrollTo(0, end);
-                setTimeout(() => { locked = false; }, 80);
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('is-visible');
+                obs.unobserve(e.target);
             }
-        })(performance.now());
-    }
-
-    window.addEventListener('load',   computeTargets);
-    window.addEventListener('resize', computeTargets);
-    computeTargets();
-
-    /* wheel */
-    window.addEventListener('wheel', e => {
-        if (isMobile()) return;
-        e.preventDefault();
-        if (locked) return;
-        goTo(getCurrentIndex() + (e.deltaY > 0 ? 1 : -1));
-    }, { passive: false });
-
-    /* touch */
-    let touchY0 = 0;
-    window.addEventListener('touchstart', e => { touchY0 = e.touches[0].clientY; }, { passive: true });
-    window.addEventListener('touchend', e => {
-        if (isMobile()) return;
-        const diff = touchY0 - e.changedTouches[0].clientY;
-        if (Math.abs(diff) > 40 && !locked) goTo(getCurrentIndex() + (diff > 0 ? 1 : -1));
-    }, { passive: true });
-
-    /* keyboard */
-    window.addEventListener('keydown', e => {
-        if (isMobile() || locked) return;
-        if (['ArrowDown','PageDown',' '].includes(e.key)) { e.preventDefault(); goTo(getCurrentIndex() + 1); }
-        if (['ArrowUp','PageUp'].includes(e.key))         { e.preventDefault(); goTo(getCurrentIndex() - 1); }
-    });
+        });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(r => obs.observe(r));
 </script>
 </body>
 </html>
