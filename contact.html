@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactez-nous – Le Fruitier · La Destrousse</title>
+    <meta name="description" content="Contactez Le Fruitier à La Destrousse : adresse, horaires, formulaire de contact. Votre primeur en Provence.">
+    <link rel="icon" type="image/png" href="image/LOGO.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --olive:#8B8F47; --green:#616D29; --kiwi:#99C122; --sage:#D2D4C1;
+            --cream:#F5F5EF; --brown:#5F3817; --brown-mid:#7a4920;
+            --white:#ffffff; --text-muted:rgba(95,56,23,0.6);
+            --ease-out:cubic-bezier(0.22,1,0.36,1);
+        }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;font-size:16px;}
+        body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--brown);overflow-x:hidden;}
+        img{display:block;max-width:100%;}
+        a{text-decoration:none;color:inherit;}
+        ul{list-style:none;}
+
+        .label{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;padding:.45rem 1rem;background:var(--sage);color:var(--green);margin-bottom:1.4rem;}
+        .lead{font-size:1rem;line-height:1.88;color:var(--text-muted);}
+
+        .btn{display:inline-flex;align-items:center;gap:.7rem;font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:1rem 2.2rem;transition:background .28s,color .28s;cursor:pointer;border:none;}
+        .btn svg{flex-shrink:0;transition:transform .28s;}
+        .btn:hover svg{transform:translateX(4px);}
+        .arr{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+        .btn--kiwi{background:var(--kiwi);color:var(--brown);}
+        .btn--kiwi:hover{background:var(--brown);color:var(--white);}
+
+        /* NAV */
+        .nav{position:fixed;inset:0 0 auto 0;z-index:900;padding:0 5rem;background:rgba(245,245,239,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 2px 28px rgba(95,56,23,.07);}
+        .nav__inner{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 0;border-bottom:1px solid var(--sage);}
+        .nav__logo{display:flex;align-items:center;}
+        .nav__logo-img{height:50px;width:auto;display:block;}
+        .nav__menu{display:flex;list-style:none;align-items:center;gap:2rem;}
+        .nav__menu a{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brown);transition:color .3s;position:relative;}
+        .nav__menu a:not(.nav__cta)::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--kiwi);transition:width .3s var(--ease-out);}
+        .nav__menu a:not(.nav__cta):hover::after,.nav__menu a.active::after{width:100%;}
+        .nav__cta{background:var(--kiwi)!important;color:var(--brown)!important;padding:.55rem 1.3rem;}
+        .nav__cta:hover{background:var(--brown)!important;color:var(--white)!important;}
+        a.nav__region{color:var(--kiwi)!important;}
+        .nav__burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+        .nav__burger span{display:block;width:24px;height:2px;background:var(--brown);}
+
+        /* DRAWER */
+        .drawer{position:fixed;inset:0;z-index:1000;background:var(--brown);transform:translateX(100%);transition:transform .4s var(--ease-out);display:flex;flex-direction:column;justify-content:center;align-items:center;}
+        .drawer.is-open{transform:translateX(0);}
+        .drawer__close{position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:var(--white);font-size:1.5rem;cursor:pointer;}
+        .drawer__menu{list-style:none;text-align:center;}
+        .drawer__menu li{margin-bottom:1.8rem;}
+        .drawer__menu a{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--white);letter-spacing:.04em;}
+        .drawer__menu a:hover{color:var(--kiwi);}
+        a.nav__region{color:var(--kiwi)!important;}
+
+        /* HERO BANNER */
+        .contact-hero{
+            padding:10rem 5rem 7rem;
+            background:var(--green);
+            position:relative;
+            overflow:hidden;
+            text-align:center;
+        }
+        .contact-hero::before{
+            content:'';position:absolute;inset:0;
+            background:url('image/bacdelegume.png') center/cover no-repeat;
+            opacity:.08;
+        }
+        .contact-hero .label{background:rgba(255,255,255,.12);color:var(--kiwi);}
+        .contact-hero h1{
+            font-family:'Cormorant Garamond',serif;
+            font-size:clamp(3.5rem,7vw,7rem);
+            font-weight:600;color:var(--white);
+            line-height:1;margin-bottom:1.5rem;
+            position:relative;
+        }
+        .contact-hero p{
+            font-size:1.05rem;line-height:1.8;
+            color:rgba(255,255,255,.72);
+            max-width:540px;margin:0 auto;
+            position:relative;
+        }
+
+        /* CONTACT MAIN SECTION */
+        .contact-main{display:grid;grid-template-columns:1fr 1fr;min-height:600px;}
+
+        /* INFO COLUMN */
+        .contact-info{
+            background:var(--brown);
+            color:var(--white);
+            padding:6rem 5rem;
+            display:flex;flex-direction:column;gap:3.5rem;
+        }
+        .contact-info__title{
+            font-family:'Cormorant Garamond',serif;
+            font-size:clamp(2rem,3vw,3rem);
+            font-weight:600;line-height:1.1;
+            margin-bottom:.5rem;
+        }
+        .contact-info__title span{color:var(--kiwi);}
+        .info-block h3{
+            font-size:.62rem;font-weight:700;letter-spacing:.28em;
+            text-transform:uppercase;color:var(--kiwi);
+            margin-bottom:1rem;
+        }
+        .info-block address{
+            font-style:normal;
+            font-family:'Cormorant Garamond',serif;
+            font-size:1.35rem;font-weight:500;
+            line-height:1.65;color:rgba(255,255,255,.88);
+        }
+        .info-block p{
+            font-size:.95rem;line-height:1.8;
+            color:rgba(255,255,255,.72);
+        }
+        .hours-grid{display:flex;flex-direction:column;gap:.6rem;}
+        .hours-row{display:flex;justify-content:space-between;align-items:baseline;gap:2rem;}
+        .hours-row .day{font-size:.85rem;font-weight:600;color:rgba(255,255,255,.88);}
+        .hours-row .time{font-size:.85rem;color:rgba(255,255,255,.65);}
+        .hours-row .sep{flex:1;border-bottom:1px dotted rgba(255,255,255,.2);}
+        .contact-info__phone{
+            font-family:'Cormorant Garamond',serif;
+            font-size:2rem;font-weight:600;
+            color:var(--white);
+            transition:color .3s;
+        }
+        .contact-info__phone:hover{color:var(--kiwi);}
+        .contact-socials{display:flex;gap:1rem;margin-top:.5rem;}
+        .contact-socials a{
+            width:38px;height:38px;border:1px solid rgba(255,255,255,.25);
+            display:flex;align-items:center;justify-content:center;
+            font-size:.7rem;font-weight:700;color:rgba(255,255,255,.7);
+            transition:background .28s,color .28s,border-color .28s;
+        }
+        .contact-socials a:hover{background:var(--kiwi);color:var(--brown);border-color:var(--kiwi);}
+
+        /* FORM COLUMN */
+        .contact-form{
+            background:var(--white);
+            padding:6rem 5rem;
+            display:flex;flex-direction:column;justify-content:center;
+        }
+        .contact-form h2{
+            font-family:'Cormorant Garamond',serif;
+            font-size:clamp(1.8rem,2.5vw,2.6rem);
+            font-weight:600;color:var(--brown);
+            margin-bottom:.5rem;
+        }
+        .contact-form .subtitle{
+            font-size:.9rem;color:var(--text-muted);
+            margin-bottom:3rem;line-height:1.6;
+        }
+        .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+        .form-field{display:flex;flex-direction:column;gap:.5rem;}
+        .form-field--full{grid-column:1/-1;}
+        .form-field label{
+            font-size:.62rem;font-weight:700;letter-spacing:.2em;
+            text-transform:uppercase;color:var(--brown);
+        }
+        .form-field input,
+        .form-field select,
+        .form-field textarea{
+            border:1.5px solid var(--sage);
+            background:var(--cream);
+            padding:.9rem 1.1rem;
+            font-family:'Nunito',sans-serif;
+            font-size:.95rem;color:var(--brown);
+            outline:none;
+            transition:border-color .25s,background .25s;
+            resize:none;
+            appearance:none;
+            -webkit-appearance:none;
+        }
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus{
+            border-color:var(--brown);
+            background:var(--white);
+        }
+        .form-field textarea{min-height:140px;}
+        .form-submit{margin-top:2rem;}
+        .form-submit .btn{width:100%;justify-content:center;padding:1.1rem 2rem;}
+        .form-notice{
+            font-size:.75rem;color:var(--text-muted);
+            margin-top:1rem;text-align:center;line-height:1.6;
+        }
+
+        /* MAP */
+        .contact-map{height:420px;overflow:hidden;position:relative;}
+        .contact-map iframe{width:100%;height:100%;border:none;display:block;}
+        .contact-map__overlay{
+            position:absolute;inset:0;pointer-events:none;
+            background:linear-gradient(to bottom,rgba(245,245,239,.35) 0%,transparent 30%);
+        }
+
+        /* FOOTER */
+        .footer{background:var(--brown);color:var(--white);padding:5rem 5rem 2rem;}
+        .footer__top{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:4rem;margin-bottom:4rem;}
+        .footer__brand-name{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;margin-bottom:.4rem;}
+        .footer__brand-sub{font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--kiwi);display:block;margin-bottom:1.2rem;}
+        .footer__brand p{font-size:.9rem;line-height:1.8;color:rgba(255,255,255,.6);max-width:280px;}
+        .footer__socials{display:flex;gap:.8rem;margin-top:1.5rem;}
+        .social{width:34px;height:34px;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:rgba(255,255,255,.5);transition:all .28s;}
+        .social:hover{background:var(--kiwi);color:var(--brown);border-color:var(--kiwi);}
+        .footer__col h4{font-size:.6rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--kiwi);margin-bottom:1.4rem;}
+        .footer__col ul{display:flex;flex-direction:column;gap:.75rem;}
+        .footer__col a{font-size:.88rem;color:rgba(255,255,255,.6);transition:color .28s;}
+        .footer__col a:hover{color:var(--white);}
+        .footer__address{font-size:.88rem;color:rgba(255,255,255,.6);line-height:1.9;margin-bottom:1.2rem;}
+        .footer__hours{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;}
+        .footer__bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;}
+        .footer__bottom p{font-size:.8rem;color:rgba(255,255,255,.35);}
+        .footer__bottom-links{display:flex;gap:2rem;}
+        .footer__bottom-links a{font-size:.78rem;color:rgba(255,255,255,.35);transition:color .28s;}
+        .footer__bottom-links a:hover{color:rgba(255,255,255,.7);}
+
+        /* RESPONSIVE */
+        @media(max-width:1024px){
+            .contact-main{grid-template-columns:1fr;}
+            .footer__top{grid-template-columns:1fr 1fr;}
+            .nav{padding:0 3rem;}
+        }
+        @media(max-width:768px){
+            .contact-hero{padding:8rem 2rem 5rem;}
+            .contact-info,.contact-form{padding:4rem 2rem;}
+            .form-grid{grid-template-columns:1fr;}
+            .footer__top{grid-template-columns:1fr;}
+            .footer{padding:4rem 2rem 2rem;}
+            .contact-map{height:280px;}
+            .nav{padding:0 1.5rem;}
+            .nav__menu{display:none;}
+            .nav__burger{display:flex;}
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+    <div class="nav__inner">
+        <a href="index.html" class="nav__logo">
+            <img src="image/LOGO.png" alt="Le Fruitier" class="nav__logo-img">
+        </a>
+        <ul class="nav__menu">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="produits.html">Nos Produits</a></li>
+            <li><a href="offrir.html">Pour Offrir</a></li>
+            <li><a href="produits-regionaux.html" class="nav__region">Produits Régionaux</a></li>
+            <li><a href="professionnels.html">Professionnels</a></li>
+            <li><a href="a-propos.html">À Propos</a></li>
+            <li><a href="contact.html" class="nav__cta active">Contactez-nous</a></li>
+        </ul>
+        <button class="nav__burger" id="burgerBtn" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- DRAWER MOBILE -->
+<div class="drawer" id="drawer">
+    <button class="drawer__close" id="drawerClose">✕</button>
+    <ul class="drawer__menu">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="produits.html">Nos Produits</a></li>
+        <li><a href="offrir.html">Pour Offrir</a></li>
+        <li><a href="produits-regionaux.html" class="nav__region">Produits Régionaux</a></li>
+        <li><a href="professionnels.html">Professionnels</a></li>
+        <li><a href="a-propos.html">À Propos</a></li>
+        <li><a href="contact.html">Contactez-nous</a></li>
+    </ul>
+</div>
+
+<!-- HERO -->
+<section class="contact-hero">
+    <span class="label">Contact</span>
+    <h1>Contactez-nous</h1>
+    <p>Une question sur nos produits, une commande, un renseignement ? Nous répondons dans les plus brefs délais.</p>
+</section>
+
+<!-- CONTACT MAIN -->
+<section class="contact-main">
+
+    <!-- INFO -->
+    <div class="contact-info">
+        <div>
+            <h2 class="contact-info__title">Venez nous<br>rendre <span>visite</span></h2>
+        </div>
+
+        <div class="info-block">
+            <h3>Notre adresse</h3>
+            <address>
+                La Route des Vignerons<br>
+                13112 La Destrousse<br>
+                Bouches-du-Rhône
+            </address>
+        </div>
+
+        <div class="info-block">
+            <h3>Horaires d'ouverture</h3>
+            <div class="hours-grid">
+                <div class="hours-row">
+                    <span class="day">Lundi</span>
+                    <span class="sep"></span>
+                    <span class="time">[ à compléter ]</span>
+                </div>
+                <div class="hours-row">
+                    <span class="day">Mardi – Vendredi</span>
+                    <span class="sep"></span>
+                    <span class="time">[ à compléter ]</span>
+                </div>
+                <div class="hours-row">
+                    <span class="day">Samedi</span>
+                    <span class="sep"></span>
+                    <span class="time">[ à compléter ]</span>
+                </div>
+                <div class="hours-row">
+                    <span class="day">Dimanche</span>
+                    <span class="sep"></span>
+                    <span class="time">[ à compléter ]</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-block">
+            <h3>Téléphone</h3>
+            <a href="tel:+33XXXXXXXXX" class="contact-info__phone">[ à compléter ]</a>
+        </div>
+
+        <div class="info-block">
+            <h3>Suivez-nous</h3>
+            <div class="contact-socials">
+                <a href="#" aria-label="Facebook">f</a>
+                <a href="#" aria-label="Instagram">ig</a>
+                <a href="#" aria-label="TikTok">tt</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="contact-form">
+        <h2>Envoyez-nous<br>un message</h2>
+        <p class="subtitle">Nous vous répondrons dans les 24 à 48 heures.</p>
+
+        <form action="mailto:contact@lefruitier.fr" method="post" enctype="text/plain">
+            <div class="form-grid">
+                <div class="form-field">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" id="prenom" name="prenom" placeholder="Marie" required>
+                </div>
+                <div class="form-field">
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" name="nom" placeholder="Dupont" required>
+                </div>
+                <div class="form-field">
+                    <label for="email">Adresse e-mail</label>
+                    <input type="email" id="email" name="email" placeholder="marie@exemple.fr" required>
+                </div>
+                <div class="form-field">
+                    <label for="telephone">Téléphone</label>
+                    <input type="tel" id="telephone" name="telephone" placeholder="06 XX XX XX XX">
+                </div>
+                <div class="form-field form-field--full">
+                    <label for="sujet">Sujet</label>
+                    <select id="sujet" name="sujet">
+                        <option value="">Choisissez un sujet</option>
+                        <option>Commande de panier</option>
+                        <option>Coffret cadeau</option>
+                        <option>Renseignement produit</option>
+                        <option>Espace Professionnels</option>
+                        <option>Autre</option>
+                    </select>
+                </div>
+                <div class="form-field form-field--full">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Votre message..." required></textarea>
+                </div>
+            </div>
+            <div class="form-submit">
+                <button type="submit" class="btn btn--kiwi">
+                    Envoyer le message
+                    <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+            <p class="form-notice">Vos données ne sont utilisées que pour répondre à votre demande.</p>
+        </form>
+    </div>
+
+</section>
+
+<!-- MAP -->
+<div class="contact-map">
+    <iframe
+        src="https://maps.google.com/maps?q=La+Destrousse+13112+Bouches-du-Rhone+France&output=embed&z=14"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Le Fruitier – La Destrousse">
+    </iframe>
+    <div class="contact-map__overlay"></div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer__top">
+        <div class="footer__brand">
+            <div class="footer__brand-name">Le Fruitier</div>
+            <span class="footer__brand-sub">Légumes · Fruits · Produits Régionaux</span>
+            <p>Votre primeur de confiance à La Destrousse. Fraîcheur, terroir et gourmandise au coeur de la Provence.</p>
+            <div class="footer__socials">
+                <a href="#" class="social" aria-label="Facebook">f</a>
+                <a href="#" class="social" aria-label="Instagram">ig</a>
+                <a href="#" class="social" aria-label="TikTok">tt</a>
+            </div>
+        </div>
+        <div class="footer__col">
+            <h4>Navigation</h4>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="produits.html">Nos Produits</a></li>
+                <li><a href="offrir.html">Pour Offrir</a></li>
+                <li><a href="produits-regionaux.html">Produits Régionaux</a></li>
+                <li><a href="professionnels.html">Professionnels</a></li>
+                <li><a href="a-propos.html">À Propos</a></li>
+            </ul>
+        </div>
+        <div class="footer__col">
+            <h4>Nos Univers</h4>
+            <ul>
+                <li><a href="produits.html#fruits">Fruits &amp; Légumes</a></li>
+                <li><a href="produits.html#epicerie">Épicerie Fine</a></li>
+                <li><a href="produits.html#cave">Cave à Vins</a></li>
+                <li><a href="produits.html#confiserie">Confiserie</a></li>
+                <li><a href="offrir.html">Paniers &amp; Cadeaux</a></li>
+            </ul>
+        </div>
+        <div class="footer__col">
+            <h4>Nous Trouver</h4>
+            <div class="footer__address">
+                La Route des Vignerons<br>
+                13112 La Destrousse<br>
+                Bouches-du-Rhône
+            </div>
+            <div class="footer__hours">
+                <strong>Lundi – Samedi</strong><br>
+                [ Horaires à compléter ]
+            </div>
+        </div>
+    </div>
+    <div class="footer__bottom">
+        <p>© 2025 Le Fruitier · La Destrousse · Tous droits réservés</p>
+        <div class="footer__bottom-links">
+            <a href="#">Mentions légales</a>
+            <a href="#">Confidentialité</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const burger = document.getElementById('burgerBtn');
+    const drawer = document.getElementById('drawer');
+    const drawerClose = document.getElementById('drawerClose');
+    burger.addEventListener('click', () => drawer.classList.add('is-open'));
+    drawerClose.addEventListener('click', () => drawer.classList.remove('is-open'));
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => drawer.classList.remove('is-open')));
+</script>
+</body>
+</html>
