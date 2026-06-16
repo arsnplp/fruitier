@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Le Fruitier – Légumes · Fruits · Épicerie Fine – La Destrousse</title>
     <meta name="description" content="Le Fruitier à La Destrousse : fruits et légumes frais, épicerie fine, cave à vins, produits régionaux de Provence. Circuit court, producteurs locaux.">
+    <link rel="icon" type="image/png" href="image/LOGO.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -135,27 +136,15 @@
         .nav.is-scrolled .nav__inner { border-color: var(--sage); }
 
         /* Logo */
-        .nav__logo { display: flex; flex-direction: column; }
-        .nav__logo-svg { width: 38px; height: 38px; margin-bottom: 0.1rem; }
-        .nav__logo-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.55rem;
-            font-weight: 700;
-            color: var(--white);
-            letter-spacing: 0.04em;
-            line-height: 1;
-            transition: color 0.4s;
+        .nav__logo { display: flex; align-items: center; }
+        .nav__logo-img {
+            height: 54px;
+            width: auto;
+            display: block;
+            transition: filter 0.4s;
+            filter: brightness(0) invert(1);
         }
-        .nav__logo-sub {
-            font-size: 0.52rem;
-            font-weight: 600;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.7);
-            transition: color 0.4s;
-        }
-        .nav.is-scrolled .nav__logo-name { color: var(--brown); }
-        .nav.is-scrolled .nav__logo-sub  { color: var(--olive); }
+        .nav.is-scrolled .nav__logo-img { filter: none; }
 
         /* Menu */
         .nav__menu {
@@ -282,9 +271,9 @@
             inset: 0;
             background: linear-gradient(
                 105deg,
-                rgba(95,56,23,0.72) 0%,
-                rgba(95,56,23,0.38) 45%,
-                rgba(97,109,41,0.12) 100%
+                rgba(95,56,23,0.88) 0%,
+                rgba(95,56,23,0.62) 45%,
+                rgba(97,109,41,0.28) 100%
             );
         }
 
@@ -1229,8 +1218,7 @@
 <nav class="nav" id="nav">
     <div class="nav__inner">
         <a href="#accueil" class="nav__logo">
-            <span class="nav__logo-name">Le Fruitier</span>
-            <span class="nav__logo-sub">Légumes · Fruits · Produits Régionaux</span>
+            <img src="image/LOGO.png" alt="Le Fruitier" class="nav__logo-img">
         </a>
 
         <ul class="nav__menu">

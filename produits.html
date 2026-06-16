@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nos Univers – Le Fruitier · La Destrousse</title>
     <meta name="description" content="Fruits et légumes de saison, épicerie fine, cave à vins, confiserie d'exception. Les 4 univers gourmands du Fruitier à La Destrousse.">
+    <link rel="icon" type="image/png" href="image/LOGO.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -40,9 +41,8 @@
         /* NAV */
         .nav{position:fixed;inset:0 0 auto 0;z-index:900;padding:0 5rem;background:rgba(245,245,239,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 2px 28px rgba(95,56,23,.07);}
         .nav__inner{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 0;border-bottom:1px solid var(--sage);}
-        .nav__logo{display:flex;flex-direction:column;}
-        .nav__logo-name{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:700;color:var(--brown);letter-spacing:.04em;line-height:1;}
-        .nav__logo-sub{font-size:.52rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--olive);}
+        .nav__logo{display:flex;align-items:center;}
+        .nav__logo-img{height:50px;width:auto;display:block;}
         .nav__menu{display:flex;list-style:none;align-items:center;gap:2rem;}
         .nav__menu a{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brown);transition:color .3s;position:relative;}
         .nav__menu a:not(.nav__cta)::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--kiwi);transition:width .3s var(--ease-out);}
@@ -130,8 +130,7 @@
 <nav class="nav" id="nav">
     <div class="nav__inner">
         <a href="index.html" class="nav__logo">
-            <span class="nav__logo-name">Le Fruitier</span>
-            <span class="nav__logo-sub">Légumes · Fruits · Épicerie Fine</span>
+            <img src="image/LOGO.png" alt="Le Fruitier" class="nav__logo-img">
         </a>
         <ul class="nav__menu">
             <li><a href="index.html">Accueil</a></li>
