@@ -91,6 +91,34 @@
         .region__card h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--brown);margin-bottom:.8rem;}
         .region__card p{font-size:.92rem;line-height:1.75;color:var(--text-muted);}
 
+        /* COFFRETS GRID */
+        .coffrets{background:var(--white);padding:7rem 5rem;}
+        .coffrets__head{text-align:center;margin-bottom:4rem;}
+        .coffrets__head h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3.4rem);font-weight:600;line-height:1.1;color:var(--brown);margin-bottom:.8rem;}
+        .coffrets__head p{font-size:1rem;color:var(--text-muted);max-width:520px;margin:0 auto;}
+
+        .coffrets__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;}
+
+        .coffret-card{background:var(--cream);display:flex;flex-direction:column;transition:transform .35s var(--ease-out),box-shadow .35s;}
+        .coffret-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(95,56,23,.12);}
+
+        .coffret-card__img{background:var(--white);padding:2rem;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+        .coffret-card__img img{width:100%;height:100%;object-fit:contain;transition:transform .5s var(--ease-out);}
+        .coffret-card:hover .coffret-card__img img{transform:scale(1.05);}
+
+        .coffret-card__body{padding:1.8rem 2rem 2rem;display:flex;flex-direction:column;flex:1;}
+        .coffret-card__name{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--brown);line-height:1.2;margin-bottom:1rem;}
+        .coffret-card__list{list-style:none;margin-bottom:1.5rem;display:flex;flex-direction:column;gap:.4rem;flex:1;}
+        .coffret-card__list li{font-size:.82rem;line-height:1.6;color:var(--text-muted);display:flex;gap:.6rem;}
+        .coffret-card__list li::before{content:'·';color:var(--kiwi);font-weight:700;flex-shrink:0;}
+
+        .coffret-card__footer{display:flex;align-items:center;justify-content:space-between;padding-top:1.2rem;border-top:1px solid var(--sage);margin-top:auto;}
+        .coffret-card__price{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--brown);}
+        .coffret-card__btn{display:inline-flex;align-items:center;gap:.5rem;font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:.7rem 1.3rem;background:var(--brown);color:var(--white);transition:background .25s;}
+        .coffret-card__btn:hover{background:var(--green);}
+        .coffret-card__btn svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;transition:transform .25s;}
+        .coffret-card__btn:hover svg{transform:translateX(3px);}
+
         /* REVEAL */
         .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out);}
         .reveal.is-visible{opacity:1;transform:none;}
@@ -129,11 +157,14 @@
             .region__intro{padding:3.5rem 2rem;}
             .region__grid{grid-template-columns:1fr;}
             .region__card{border-right:none;border-bottom:1px solid var(--sage);}
+            .coffrets{padding:5rem 2rem;}
+            .coffrets__grid{grid-template-columns:repeat(2,1fr);gap:1.8rem;}
             .footer__top{grid-template-columns:1fr 1fr;padding:3rem 2rem;gap:2rem;}
             .footer__bottom{padding:1.5rem 2rem;}
         }
         @media(max-width:768px){
             .split__text{padding:2.5rem 1.5rem;}
+            .coffrets__grid{grid-template-columns:1fr;}
             .footer__top{grid-template-columns:1fr;}
         }
     </style>
@@ -194,12 +225,149 @@
             <li>Paniers de Noël garnis</li>
             <li>Corbeilles de fruits de saison</li>
         </ul>
-        <a href="index.html#contact" class="btn btn--dark reveal">COMMANDER UN PANIER <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div>
     <div class="split__img">
         <img src="image/Panieraoffrire.png" alt="Paniers garnis et cadeaux gourmands">
     </div>
 </section>
+
+
+<!-- COFFRETS CADEAUX -->
+<section class="coffrets" id="coffrets">
+    <div class="coffrets__head reveal">
+        <span class="label">Nos Sélections</span>
+        <h2>NOS COFFRETS CADEAUX</h2>
+        <p>Des coffrets composés avec soin pour toutes les occasions : gourmandise, raffinement et Provence réunis.</p>
+    </div>
+
+    <div class="coffrets__grid">
+
+        <!-- Coffret Ibérique -->
+        <div class="coffret-card reveal">
+            <div class="coffret-card__img">
+                <img src="image/pack/Coffret cadeau Ibérique.png" alt="Coffret cadeau Ibérique">
+            </div>
+            <div class="coffret-card__body">
+                <h3 class="coffret-card__name">Coffret cadeau Ibérique</h3>
+                <ul class="coffret-card__list">
+                    <li>Petites Sardines à l'Huile d'Olive, El Tato</li>
+                    <li>Turrones, Coloma Garcia</li>
+                    <li>Petits gressins artisanaux, El Corte Inglés</li>
+                    <li>Chips goût jambon ibérique, Torres</li>
+                    <li>Huile d'olive vierge extra biologique, Alhema de Queiles</li>
+                </ul>
+                <div class="coffret-card__footer">
+                    <span class="coffret-card__price">55,00 €</span>
+                    <a href="index.html#contact" class="coffret-card__btn">Commander <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coffret Tout chocolat -->
+        <div class="coffret-card reveal">
+            <div class="coffret-card__img">
+                <img src="image/pack/Coffret cadeau Tout chocolat.png" alt="Coffret cadeau Tout chocolat">
+            </div>
+            <div class="coffret-card__body">
+                <h3 class="coffret-card__name">Coffret cadeau Tout chocolat</h3>
+                <ul class="coffret-card__list">
+                    <li>Amandes au chocolat, La Grande Épicerie de Paris</li>
+                    <li>Chocolat noir au praliné amandes, Bonnat</li>
+                    <li>Tablette blond Dulcey, Valrhona</li>
+                    <li>Tablette Lait 45% Praliné croustillant, Cluizel</li>
+                    <li>Chocolat chaud Angelina 25cl</li>
+                </ul>
+                <div class="coffret-card__footer">
+                    <span class="coffret-card__price">69,00 €</span>
+                    <a href="index.html#contact" class="coffret-card__btn">Commander <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coffret Jeune maman -->
+        <div class="coffret-card reveal">
+            <div class="coffret-card__img">
+                <img src="image/pack/Coffret cadeau Jeune maman.png" alt="Coffret cadeau Jeune maman">
+            </div>
+            <div class="coffret-card__body">
+                <h3 class="coffret-card__name">Coffret cadeau Jeune maman</h3>
+                <ul class="coffret-card__list">
+                    <li>Rooibos Vanille 20 sachets, Kusmi Tea</li>
+                    <li>Pâtes farfalle fantasia, Pastificio Artigiano</li>
+                    <li>Tablette chocolat noir, L'Éclair de Génie</li>
+                    <li>Confiture framboise cassis, La Cour d'Orgères</li>
+                    <li>Les sablés Bredele, La Grande Épicerie de Paris</li>
+                </ul>
+                <div class="coffret-card__footer">
+                    <span class="coffret-card__price">79,00 €</span>
+                    <a href="index.html#contact" class="coffret-card__btn">Commander <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coffret D'exception -->
+        <div class="coffret-card reveal">
+            <div class="coffret-card__img">
+                <img src="image/pack/Coffret cadeau D'exception.png" alt="Coffret cadeau D'exception">
+            </div>
+            <div class="coffret-card__body">
+                <h3 class="coffret-card__name">Coffret cadeau D'exception</h3>
+                <ul class="coffret-card__list">
+                    <li>Champagne Dom Pérignon Vintage 2015</li>
+                    <li>Foie gras d'oie 180g, Castaing</li>
+                    <li>Huile d'olive Vallée des Baux AOP, Château d'Estoublon</li>
+                    <li>Sel de Noirmoutier &amp; truffe du Périgord</li>
+                    <li>Marco Polo 100g, Mariage Frères</li>
+                </ul>
+                <div class="coffret-card__footer">
+                    <span class="coffret-card__price">499,00 €</span>
+                    <a href="index.html#contact" class="coffret-card__btn">Commander <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coffret Nature gourmande -->
+        <div class="coffret-card reveal">
+            <div class="coffret-card__img">
+                <img src="image/pack/Coffret cadeau Nature gourmande.png" alt="Coffret cadeau Nature gourmande">
+            </div>
+            <div class="coffret-card__body">
+                <h3 class="coffret-card__name">Coffret cadeau Nature gourmande</h3>
+                <ul class="coffret-card__list">
+                    <li>Concentré de gingembre bio yuzu &amp; thym, Gimber</li>
+                    <li>Mélange de fruits secs bio, Maison Naja</li>
+                    <li>Miel de fleurs sauvages 100% français</li>
+                    <li>Sablés citron-pavot, Maison Craquelin</li>
+                    <li>Tablette chocolat amande 46%, Genaveh</li>
+                </ul>
+                <div class="coffret-card__footer">
+                    <span class="coffret-card__price">99,00 €</span>
+                    <a href="index.html#contact" class="coffret-card__btn">Commander <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coffret duo vins -->
+        <div class="coffret-card reveal">
+            <div class="coffret-card__img">
+                <img src="image/pack/Coffret duo vins de Bordeaux.png" alt="Coffret duo vins de Bordeaux">
+            </div>
+            <div class="coffret-card__body">
+                <h3 class="coffret-card__name">Coffret duo vins de Bordeaux</h3>
+                <ul class="coffret-card__list">
+                    <li>Château Chasse-Spleen, Héritage, AOC Haut-Médoc 2016</li>
+                    <li>Château Lalande, AOC Saint-Julien 2016</li>
+                </ul>
+                <div class="coffret-card__footer">
+                    <span class="coffret-card__price">68,00 €</span>
+                    <a href="index.html#contact" class="coffret-card__btn">Commander <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
 
 <!-- FOOTER -->
 <footer class="footer">
