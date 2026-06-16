@@ -96,14 +96,14 @@
         .carte__map img{width:100%;height:auto;display:block;}
 
         /* PRODUCTEURS */
-        .producteurs{background:var(--white);display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:5rem;}
-        .producteurs__visual{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.4rem;padding:2rem;}
-        .producteurs__visual img{width:100%;max-width:340px;border-radius:3px;box-shadow:0 8px 32px rgba(95,56,23,0.12);}
-        .producteurs__farmer-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--green);}
-        .producteurs__farmer-caption{font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--brown);}
-        .producteurs__text{padding:3rem 4rem;}
-        .producteurs__text h2{margin-bottom:.6rem;}
-        .producteurs__text p{margin-bottom:1.3rem;}
+        .producteurs{background:var(--white);display:grid;grid-template-columns:5fr 7fr;align-items:center;padding:4rem 5rem;}
+        .producteurs__visual{display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.2rem;padding:1.5rem;}
+        .producteurs__visual img{width:100%;max-width:320px;border-radius:3px;box-shadow:0 8px 32px rgba(95,56,23,0.12);}
+        .producteurs__farmer-title{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:600;font-style:italic;color:var(--green);}
+        .producteurs__farmer-caption{font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--brown);}
+        .producteurs__text{padding:2rem 3rem 2rem 4rem;}
+        .producteurs__text h2{font-size:clamp(3rem,4.5vw,5.5rem);line-height:1;margin-bottom:.5rem;}
+        .producteurs__text p{margin-bottom:1.2rem;color:var(--brown);font-size:1rem;line-height:1.75;}
 
         /* REVEAL */
         .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out);}
@@ -285,13 +285,9 @@
     <div class="producteurs__text reveal-r">
         <span class="label">Nos Agriculteurs</span>
         <h2 class="display">ZOOM SUR NOS AGRICULTEURS<br><span style="color:var(--kiwi)">PARTENAIRES</span></h2>
-        <p class="lead">Rémy est très éthique dans sa façon de cultiver les tomates. Il privilégie des pratiques durables et veille à ce que chaque étape de son processus agricole respecte l'environnement.</p>
-        <p class="lead">De la sélection de graines non-OGM à l'utilisation d'engrais naturels, Thomas s'engage à maintenir la santé du sol et de l'écosystème environnant.</p>
-        <p class="lead">Il prend également soin de minimiser l'utilisation de l'eau, en employant des systèmes d'irrigation goutte-à-goutte pour maximiser l'efficacité.</p>
-        <a href="index.html#contact" class="btn btn--kiwi">
-            DÉCOUVREZ NOS AGRICULTEURS
-            <svg class="arr" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+        <p>Rémy est très éthique dans sa façon de cultiver les tomates. Il privilégie des pratiques durables et veille à ce que chaque étape de son processus agricole respecte l'environnement.</p>
+        <p>De la sélection de graines non-OGM à l'utilisation d'engrais naturels, Thomas s'engage à maintenir la santé du sol et de l'écosystème environnant.</p>
+        <p>Il prend également soin de minimiser l'utilisation de l'eau, en employant des systèmes d'irrigation goutte-à-goutte pour maximiser l'efficacité.</p>
     </div>
 </section>
 
