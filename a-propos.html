@@ -20,10 +20,12 @@
             --white:      #ffffff;
             --text-muted: rgba(95,56,23,0.6);
             --ease-out:   cubic-bezier(0.22,1,0.36,1);
+            --radius:     14px;
+            --radius-sm:  8px;
         }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; overflow-x: hidden; }
+        html { scroll-behavior: smooth; font-size: 17.5px; overflow-x: hidden; }
         body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--brown); overflow-x: hidden; }
         img  { display: block; max-width: 100%; }
         a    { text-decoration: none; color: inherit; }
@@ -52,6 +54,7 @@
             font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em;
             text-transform: uppercase; padding: 1rem 2.2rem;
             transition: background 0.28s, color 0.28s; cursor: pointer; border: none;
+            border-radius: var(--radius-sm);
         }
         .btn svg { flex-shrink: 0; transition: transform 0.28s; }
         .btn:hover svg { transform: translateX(4px); }
@@ -68,21 +71,21 @@
             position: fixed; inset: 0 0 auto 0; z-index: 900; padding: 0 5rem;
             background: rgba(245,245,239,0.97);
             backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-            box-shadow: 0 2px 28px rgba(95,56,23,0.07);
+            box-shadow: 0 2px 22px rgba(95,56,23,0.06);
         }
         .nav__inner {
             display: flex; align-items: center; justify-content: space-between;
-            padding: 1.4rem 0; border-bottom: 1px solid var(--sage);
+            padding: 0.9rem 0; border-bottom: 1px solid var(--sage);
         }
         .nav__logo { display: flex; align-items: center; }
-        .nav__logo-img { height: 50px; width: auto; display: block; }
-        .nav__menu { display:flex; list-style:none; align-items:center; gap:2.2rem; }
-        .nav__menu a { font-size:0.72rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--brown); transition:color 0.3s; position:relative; }
+        .nav__logo-img { height: 42px; width: auto; display: block; }
+        .nav__menu { display:flex; list-style:none; align-items:center; gap:1.7rem; }
+        .nav__menu a { font-size:0.85rem; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; color:var(--brown); transition:color 0.3s; position:relative; }
         .nav__menu a:not(.nav__cta)::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1.5px; background:var(--kiwi); transition:width 0.3s var(--ease-out); }
         .nav__menu a:not(.nav__cta):hover::after { width:100%; }
         .nav__menu a.active { color:var(--green); }
         .nav__menu a.active::after { width:100%; }
-        .nav__cta { background:var(--kiwi)!important; color:var(--brown)!important; padding:0.55rem 1.3rem; }
+        .nav__cta { background:var(--kiwi)!important; color:var(--brown)!important; padding:0.55rem 1.3rem; border-radius:var(--radius-sm); }
         .nav__cta:hover { background:var(--brown)!important; color:var(--white)!important; }
         a.nav__region { color:var(--kiwi)!important; }
         .nav__burger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
@@ -209,6 +212,7 @@
             display:flex; align-items:center; justify-content:center;
             background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25);
             color:white; cursor:pointer;
+            border-radius:var(--radius-sm);
             transition:background 0.3s, border-color 0.3s, color 0.3s;
         }
         .apc__arrow:hover { background:var(--kiwi); border-color:var(--kiwi); color:var(--brown); }
@@ -320,6 +324,8 @@
         ════════════════════════════════════════════ */
         @media (max-width:1200px) {
             .nav { padding:0 3rem; }
+            .nav__menu { gap:1.2rem; }
+            .nav__menu a { font-size:0.78rem; letter-spacing:0.06em; }
             .comptoir,.carte,.footer { padding-left:3rem; padding-right:3rem; }
             .producteurs__text { padding:4rem 3rem; }
             .apc__slide-text { padding:3rem 3.5rem; }
@@ -363,8 +369,8 @@
         <ul class="nav__menu">
             <li><a href="index.html">Accueil</a></li>
             <li><a href="produits.html">Nos Produits</a></li>
-            <li><a href="offrir.html">Pour Offrir</a></li>
             <li><a href="produits-regionaux.html" class="nav__region">Produits Régionaux</a></li>
+            <li><a href="offrir.html">Pour Offrir</a></li>
             <li><a href="professionnels.html">Professionnels</a></li>
             <li><a href="a-propos.html" class="active">À Propos</a></li>
             <li><a href="contact.html" class="nav__cta">Contactez-nous</a></li>
@@ -381,8 +387,8 @@
     <ul class="drawer__menu">
         <li><a href="index.html">Accueil</a></li>
         <li><a href="produits.html">Nos Produits</a></li>
-        <li><a href="offrir.html">Pour Offrir</a></li>
         <li><a href="produits-regionaux.html" class="nav__region">Produits Régionaux</a></li>
+        <li><a href="offrir.html">Pour Offrir</a></li>
         <li><a href="professionnels.html">Professionnels</a></li>
         <li><a href="a-propos.html">À Propos</a></li>
         <li><a href="contact.html">Contactez-nous</a></li>
@@ -540,13 +546,14 @@
             <div class="footer__address">
                 La Route des Vignerons<br>
                 13112 La Destrousse<br>
-                Bouches-du-Rhône
+                Bouches-du-Rhône<br>
+                <a href="tel:+33442711629">04 42 71 16 29</a>
             </div>
             <div class="footer__hours">
                 <strong>Lundi – Samedi</strong><br>
-                [ Horaires à compléter ]<br><br>
+                07h30 – 19h30<br><br>
                 <strong>Dimanche</strong><br>
-                [ Horaires à compléter ]
+                07h30 – 12h00
             </div>
         </div>
     </div>
