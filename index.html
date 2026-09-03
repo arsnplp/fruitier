@@ -119,7 +119,7 @@
             position: fixed;
             inset: 0 0 auto 0;
             z-index: 900;
-            padding: 0 5rem;
+            padding: 0 3.5rem;
             background: rgba(245,245,239,0.97);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
@@ -148,16 +148,17 @@
             display: flex;
             list-style: none;
             align-items: center;
-            gap: 1.7rem;
+            gap: 1.1rem;
         }
         .nav__menu a {
-            font-size: 0.85rem;
+            font-size: 0.76rem;
             font-weight: 700;
-            letter-spacing: 0.09em;
+            letter-spacing: 0.05em;
             text-transform: uppercase;
             color: var(--brown);
             transition: color 0.3s;
             position: relative;
+            white-space: nowrap;
         }
 
         .nav__menu a:not(.nav__cta)::after {
@@ -1107,9 +1108,9 @@
         .local-cta__col .lead { margin-bottom: 1.5rem; }
 
         @media (max-width: 1200px) {
-            .nav { padding: 0 3rem; }
-            .nav__menu { gap: 1.15rem; }
-            .nav__menu a { font-size: 0.78rem; letter-spacing: 0.06em; }
+            .nav { padding: 0 2rem; }
+            .nav__menu { gap: 0.7rem; }
+            .nav__menu a { font-size: 0.68rem; letter-spacing: 0.02em; }
             .promesse__text { padding: 5rem 3.5rem 5rem 3rem; }
             .hero__content { padding: 0 4rem; padding-top: 5rem; }
             .hero__dots { left: 4rem; }
@@ -1211,6 +1212,7 @@
             <li><a href="#accueil">Accueil</a></li>
             <li><a href="produits.html">Nos Produits</a></li>
             <li><a href="produits-regionaux.html" class="nav__region">Produits Régionaux</a></li>
+            <li><a href="nos-producteurs.html">Nos Producteurs</a></li>
             <li><a href="offrir.html">Pour Offrir</a></li>
             <li><a href="professionnels.html">Professionnels</a></li>
             <li><a href="a-propos.html">À Propos</a></li>
@@ -1230,6 +1232,7 @@
         <li><a href="#accueil">Accueil</a></li>
         <li><a href="produits.html">Nos Produits</a></li>
         <li><a href="produits-regionaux.html" class="nav__region">Produits Régionaux</a></li>
+        <li><a href="nos-producteurs.html">Nos Producteurs</a></li>
         <li><a href="offrir.html">Pour Offrir</a></li>
         <li><a href="professionnels.html">Professionnels</a></li>
         <li><a href="a-propos.html">À Propos</a></li>
